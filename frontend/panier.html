@@ -111,10 +111,24 @@
                             <div class="form-group col-lg-12">
                                 Votre adresse
                             </div>
-                            <input type="number" class="number form-group" placeholder="37" required/>
+                            <input type="number" class="number form-group" placeholder="37" pattern="[0-9]{,10}" required/>
                             <input type="" class="address form-group" placeholder="La croisée des mondes" required/>
-                            <br><input type="number" class="number form-group" placeholder="75000" required/>
+                            <br><input type="number" class="number form-group" placeholder="75000" pattern="[0-9]{,5}" required/>
                             <input type="" class="address form-group" placeholder="PARIS" required/>
+                    </div>
+                    <div class="form-group col-lg-12">
+                    <label for="Country">Country : </label>
+                        <select id="Country">
+                            <option value="fr">
+                                France
+                            </option>
+                            <option value="be">
+                                Belgium
+                            </option>
+                            <option value="ch">
+                                Switzerland
+                            </option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <div class="form-group col-lg-12">
@@ -154,7 +168,7 @@
         </script><script src="JS/fichier.js"></script>  
         <script>
             $(document).ready(function(){            
-                RecupBisounoursPanier();
+                recupBisounoursPanier();
             }); 
         </script>
     </body>
