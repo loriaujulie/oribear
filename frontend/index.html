@@ -24,77 +24,81 @@
                 </i>     
             </div>-->
         </header>
-        <nav class="col navbar navbar-expand-lg navbar-dark">
-            <a class="navbar-brand" href="index.html">ORIBEAR</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div id="navbarContent" class="collapse navbar-collapse">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">
-                        Accueil
-                    </a>    
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="produit.html">
-                        Produits
-                    </a>                      
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="panier.html">
-                        Panier
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="commande.html">
-                        J'arrive bientôt !
-                    </a>
-                </li>
-            </ul>             
-        </nav>                
-        <aside class="scroll">
+        <nav class="navigation isOpen col navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">ORIBEAR</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div id="navbarContent" class="collapse navbar-collapse d-flex justify-content-end">
+                <ul class="navbar-nav ">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">
+                            Accueil
+                        </a>    
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="produit.html">
+                            Produits
+                        </a>                      
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="panier.html">
+                            Panier
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="commande.html">
+                            J'arrive bientôt !
+                        </a>
+                    </li>
+                </ul>          
+            </div>   
+        </nav>               
+        <aside class="scroll position-fixed ml-0 pl-0">
             <a href="#">  
-                <i class="far fa-arrow-alt-circle-up fa-2x" aria-label="Haut de page">                                             
+                <i class="far fa-arrow-alt-circle-up fa-2x text-body sticky-top" aria-label="Haut de page">                                             
                 </i>
             </a>            
         </aside>
-        <div class="jumbotron">
+        <div class="jumbotron text-center">
             <h1>
-                ORIBEAR : Un teddy qui vous ressemble
-            </h1>                 
+                ORIBEAR 
+            </h1>         
             <h2>
-                Vous en rêvez, nous le faisons pour vous !
-            </h2>
-        </div>
-        <div class="row" id="result">
+                Un teddy qui vous ressemble
+            </h2>  
+        </div>      
+        <h3 class="text-center">
+            Vous en rêvez, nous le faisons pour vous !
+        </h3>
+        <div class="row justify-content-around" id="result">
         </div>   
-        <footer class="row text-center bg-info">
-            <ul class="inline">
-                <li class="list-inline-item">
-                    <a href="index.html" target="_blank">
-                        Mentions légales
-                </li>
-                <li class="list-inline-item">
-                    .
-                </li>
-                <li class="list-inline-item">
-                    <a href="mailto:julieloriau@gmail.com">
-                        Nous contacter
-                    </a>
-                </li>
-            </ul>
+        <footer class="row bg-info mt-4">
+            <div class="container">
+                <ul class="inline pt-4 pl-0 d-flex justify-content-around ">
+                    <li class="list-inline-item">
+                        <a href="index.html" target="_blank" class="text-white">
+                            Mentions légales
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="mailto:julieloriau@gmail.com" class="text-white">
+                            Nous contacter
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </footer>
     </div>
-    <div class="cache d-none">
-        <div class="card [id]" id="contenu" style="width: 18rem;">
-            <img src="[url]" class="card-img-top" alt="...">
+    <div class="cache d-none " id="contenu">
+        <div class="card [id] mt-4" style="width: 18rem;">
+            <img src="[url]" class="card-img-top" alt="ours à vendre" id="img">
             <div class="card-body">
-              <h5 class="card-title">[title]</h5>
-              <p class="card-text">[description]</p>    
-              <a href="[url]" class="btn btn-primary"></a>
+                <h5 class="card-title">[title]</h5>
+                <p class="card-text">[description]</p>    
+                <a href="[url]" id="bouton" class="btn btn-primary"></a>
             </div>
-          </div>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

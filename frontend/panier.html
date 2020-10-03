@@ -12,160 +12,169 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">     
         <title>ORIBEAR</title>   
     </head>
-    <body>
-        <body>      
-            <div class="container-fluid bg-secondary">
-                <header class="row bg-info d-flex justify-content-around">        
-                    <div class="title font-weight-bold display-4">
-                        ORIBEAR
-                    </div>
-                    <!--<div class="panier">
-                        <i class="fas fa-shopping-basket" aria-label="Panier"> 
-                        </i>     
-                    </div>-->
-                </header>
-                <nav class="col navbar navbar-expand-lg navbar-dark">
+    <body>     
+        <div class="container-fluid bg-secondary">
+            <header class="row bg-info d-flex justify-content-around">        
+                <div class="title font-weight-bold display-4">
+                    ORIBEAR
+                </div>
+                <!--<div class="panier">
+                    <i class="fas fa-shopping-basket" aria-label="Panier"> 
+                    </i>     
+                </div>-->
+            </header>
+            <nav class="col navbar navbar-expand-lg navbar-dark">
+                <div class="container">
                     <a class="navbar-brand" href="index.html">ORIBEAR</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div id="navbarContent" class="collapse navbar-collapse">
-                    <ul class="navbar-nav">
+                    <div id="navbarContent" class="collapse navbar-collapse d-flex justify-content-end">
+                    <ul class="navbar-nav ">
                         <li class="nav-item active">
                             <a class="nav-link" href="index.html">
                                 Accueil
                             </a>    
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item active">
                             <a class="nav-link" href="produit.html">
                                 Produits
                             </a>                      
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item active">
                             <a class="nav-link" href="panier.html">
                                 Panier
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item active">
                             <a class="nav-link" href="commande.html">
                                 J'arrive bientôt !
                             </a>
                         </li>
-                    </ul>             
-                </nav>                    
-                <aside class="scroll">
-                    <a href="#">  
-                        <i class="far fa-arrow-alt-circle-up fa-2x" aria-label="Haut de page">                                             
-                        </i>
-                    </a>            
-                </aside>
-                <div class="row">
-                    <div class="col-6 col-md-4 col-lg-3">    
-                        <div class="card shadow">
-                        </div>
+                    </ul>          
+                </div>   
+            </nav>                  
+            <aside class="scroll position-fixed">
+                <a href="#">  
+                    <i class="far fa-arrow-alt-circle-up fa-2x text-body" aria-label="Haut de page">  
+                    </i>
+                </a>            
+            </aside>
+            <div class="row">
+                <div class="col-6 col-md-4 col-lg-3">    
+                    <div class="card shadow">
                     </div>
-                </div>  
-                <section class="selection">
-                    <h2>Nom du Teddy choisi</h2>
-                    <p>
-                        Rappel de votre sélection :
-                    </p>
-                    <p class="price">
+                </div>
+            </div>  
+            <section class="selection text-center">
+                <h2>Rappel de votre sélection</h2>
+                <p class="price">
 
-                    </p>
-                </section>
-                <form method="post" action="" class="text-center">
-                    <h3>
-                        Veuillez remplir le formulaire ci-dessous pour recevoir votre(vos) Teddy(ies) :
-                    </h3>
-                    <div class="form-group">
-                        <label for="nom" class="form-group col-lg-12">
-                            Votre nom
-                        </label>
-                        <input type="text" name="nom" id="nom" placeholder="BYRNISON" class="form-group"autofocus required/>
-                    </div>
-                    <div class="form-group">
-                        <label for="prenom" class="form-group col-lg-12">
-                            Votre prénom
-                        </label>
-                        <input type="text" name="prenom" placeholder="Iorek" class="form-group"  required/>
-                    </div>
+                </p>
+            </section>
+            <form method="post" action="" class="text-center">
+                <h3>
+                    Veuillez remplir le formulaire ci-dessous pour recevoir votre(vos) Teddy(ies) :
+                </h3>
+                <div class="form-group">
+                    <label for="nom" class="form-group col-lg-12">
+                        Votre nom
+                    </label>
+                    <input type="text" name="nom" id="nom" placeholder="BYRNISON" class="form-group"autofocus required/>
+                </div>
+                <div class="form-group">
+                    <label for="prenom" class="form-group col-lg-12">
+                        Votre prénom
+                    </label>
+                    <input type="text" name="prenom" placeholder="Iorek" class="form-group"  required/>
+                </div>
+                <div class="form-group col-lg-12">
                     <div class="form-group col-lg-12">
+                        Votre date de naissance
+                    </div><input type="date" />
+                </div>
+                <div class="form-group">
+                    <label for="email" class="form-group col-lg-12"> 
+                        Votre email     
+                    </label>
+                    <input type="email" name="email" id="email" placeholder="iyrnison@gmail.com" required/>
+                </div>
+                <div class="form-group col-lg-12">
+                    <div class="form-group col-lg-12">
+                        Votre numéro de téléphone
+                    </div>  
+                    <input type="tel" placeholder="00 00 00 00 00" required/>
+                </div>
+                <div class="form-group col-lg-12">
                         <div class="form-group col-lg-12">
-                            Votre date de naissance
-                        </div><input type="date" />
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="form-group col-lg-12"> 
-                            Votre email     
-                        </label>
-                        <input type="email" name="email" id="email" placeholder="iyrnison@gmail.com" required/>
-                    </div>
-                    <div class="form-group col-lg-12">
-                        <div class="form-group col-lg-12">
-                            Votre numéro de téléphone
-                        </div>  
-                        <input type="tel" placeholder="00 00 00 00 00" required/>
-                    </div>
-                    <div class="form-group col-lg-12">
-                            <div class="form-group col-lg-12">
-                                Votre adresse
-                            </div>
-                            <input type="number" class="number form-group" placeholder="37" pattern="[0-9]{,10}" required/>
-                            <input type="" class="address form-group" placeholder="La croisée des mondes" required/>
-                            <br><input type="number" class="number form-group" placeholder="75000" pattern="[0-9]{,5}" required/>
-                            <input type="" class="address form-group" placeholder="PARIS" required/>
-                    </div>
-                    <div class="form-group col-lg-12">
-                    <label for="Country">Country : </label>
-                        <select id="Country">
-                            <option value="fr">
-                                France
-                            </option>
-                            <option value="be">
-                                Belgium
-                            </option>
-                            <option value="ch">
-                                Switzerland
-                            </option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-group col-lg-12">
-                            Un message à nous passer ?
+                            Votre adresse
                         </div>
-                        <textarea class="col-lg-4">
-                        </textarea>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" class="form-check-input" name="CGV" required/> J'accepte les conditions générales de vente
-                    </div>
+                        <input type="number" class="number form-group" placeholder="37" pattern="[0-9]{,10}" required/>
+                        <input type="" class="address form-group" placeholder="La croisée des mondes" required/>
+                        <br><input type="number" class="number form-group" placeholder="75000" pattern="[0-9]{,5}" required/>
+                        <input type="" class="address form-group" placeholder="PARIS" required/>
+                </div>
+                <div class="form-group col-lg-12">
+                <label for="Country">Country : </label>
+                    <select id="Country">
+                        <option value="fr">
+                            France
+                        </option>
+                        <option value="be">
+                            Belgium
+                        </option>
+                        <option value="ch">
+                            Switzerland
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <div class="form-group col-lg-12">
-                        <input class="btn btn-info" type="submit"> 
-                    </div>                                      
-                </form>          
-                <footer class="row text-center bg-info">
-                    <ul class="inline">
+                        Un message à nous passer ?
+                    </div>
+                    <textarea class="col-lg-4">
+                    </textarea>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" name="CGV" required/> J'accepte les conditions générales de vente
+                </div>
+                <div class="form-group col-lg-12">
+                    <input class="btn btn-info" type="submit"> 
+                </div>                                      
+            </form>                    
+            <div class="row justify-content-around" id="result">
+            </div>                 
+            <footer class="row bg-info mt-4">
+                <div class="container">
+                    <ul class="inline pt-4 d-flex justify-content-around ">
                         <li class="list-inline-item">
-                            <a href="index.html" target="_blank">
+                            <a href="index.html" target="_blank" class="text-white">
                                 Mentions légales
-                            </a>
                         </li>
                         <li class="list-inline-item">
-                            .
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="mailto:julieloriau@gmail.com">
+                            <a href="mailto:julieloriau@gmail.com" class="text-white">
                                 Nous contacter
                             </a>
                         </li>
                     </ul>
-                </footer>
+                </div>
+            </footer>
+        </div>
+        <div class="cache d-none " id="contenu">
+            <div class="card [id] mt-4" style="width: 18rem;">
+                <img src="[url]" class="card-img-top" alt="ours à vendre">
+                <div class="card-body">
+                    <h5 class="card-title">[title]</h5>
+                    <p class="card-text">[description]</p>    
+                    <a href="[url]" class="btn btn-primary"></a>
+                </div>
             </div>
+        </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-        </script><script src="JS/fichier.js"></script>  
+        </script>
+        <script src="JS/fichier.js"></script>  
         <script>
             $(document).ready(function(){            
                 recupBisounoursPanier();
