@@ -5,7 +5,6 @@ $(document).ready(function(){
     });
 }); 
 
-
 /*ACCUEIL*/
 function recupBisounours (){
     let url  = "http://localhost:3000/api/teddies";
@@ -39,9 +38,9 @@ function recupBisounours (){
 };
 
 /*Clic sur le bouton du produit*/
-let boutonElt = document.getElementById("bouton");
-boutonElt.addEventListener("click", function () {
-    console.log("clic");
+//let boutonElt = document.querySelectorAll("#bouton");
+document.querySelector("a").addEventListener("click", function (event) {
+    open(urlBase);
 });
 
 //essai pour remplacement url à insérer après ligne 15
