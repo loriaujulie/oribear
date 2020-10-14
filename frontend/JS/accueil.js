@@ -1,6 +1,4 @@
-
-
-/*ACCUEIL*/
+// // /*ACCUEIL*/
 function recupBisounours (){
     let url  = "http://localhost:3000/api/teddies";
     // création de la requête ajax
@@ -17,7 +15,7 @@ function recupBisounours (){
                         //création de la variable bear : récupère l'id "contenu" du document en vu de remplacer
                         let bear = document.getElementById("contenu").innerHTML;
                         //dans #contenu, la class URL sera remplacée par le retour de imageUrl depuis la requête à l'url définie
-                        bear=bear.replace("[url]",reponse[i]["imageUrl"]);
+                        bear=bear.replace("img.jpeg",reponse[i]["imageUrl"]);
                         //dans #contenu, la class URL sera remplacée par le retour de name depuis la requête à l'url définie 
                         bear=bear.replace("[title]",reponse[i]["name"]);
                         //dans #contenu, la class URL sera remplacée par le retour de description depuis la requête à l'url définie
@@ -34,6 +32,33 @@ function recupBisounours (){
     }
     request.send(null);
 };
+
+
+////////////// A CONTINUER POUR SUPPRIMER JQUERY ET ENVISAGER LA CREATION DE LA DIV AVEC JS//////////
+// let url = "http://localhost:3000/api/teddies/";
+// fetch(url).then((response)=> response.json().then((o)=>{ 
+//         for (var i = 0; i<=o.length; i++){
+//             for(nounours in o){
+//                 const newEltDiv = document.createElement("div");
+//                 const newDivCard = document.createElement("div");
+//                 const newDivCardBody = document.createElement("div");
+
+//                 let contenu = document.getElementById('contenu'); 
+                
+//                 let eltDiv = document.getElementById("result");
+//                 eltDiv.appendChild(newEltDiv);   
+//                 eltDiv.appendChild(contenu); 
+// // //            //Ajoute une class CSS à un élément HTML 
+// //             result.innerHTML = contenu;
+//             let bear = document.getElementById("contenu").innerHTML;
+//             bear=bear.replace("[src]",o.imageUrl);     
+//             bear=bear.replace("[title]",o.name);
+//             bear=bear.replace("[description]",o.description);         
+//             document.getElementById('result').innerHTML = bear;      
+//             } 
+//         }
+//     }
+// ));
 
 
 // /*PRODUITS*/

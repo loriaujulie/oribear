@@ -9,12 +9,13 @@
         <link rel="shortcut icon" type="image/png" href="images/orinoco.png"/>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
         <!--POLICE et Icones-->    
         <link href="https://fonts.googleapis.com/css2?family=Fondamento&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">     
     </head>
     <body>      
-        <div class="container-fluid bg-secondary">
+        <div class="container-fluid bg-info">
             <header class="row bg-info d-flex justify-content-around">        
                 <div class="title font-weight-bold display-4">
                     <div class="text-center">
@@ -54,38 +55,49 @@
                     </h6>
                 </div>
             </div>          
-            <div class="row justify-content-around " id="result">
+            <div class="row justify-content-around mt-4 mb-4" id="result">
                 <div class="cache d-none " id="contenu">
-                    <div class="card [id] mt-4" style="width: 40rem;">
-                        <img src="[url]" class="card-img-top" alt="ours à vendre" id="img">
+                    <div class="card [id] mt-4 shadow-lg p-3 mb-5" style="width: 35rem;">
+                        <img src="img.jpeg" class="card-img-top" alt="ours à vendre" id="img">
                         <div class="card-body d-flex flex-column justify-content-between">
                             <h5 class="card-title text-center">[title]</h5>
                             <p class="card-text">[description]</p>   
                             <p class="card-text text-center font-weight-bold">[price]</p>
-                            <div class="dropdown bouton d-flex justify-content-around">
-                                <button class="btn btn-info dropdown-toggle pull-right" type="button" id="boutoncolor" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    couleurs
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <div id="colorselect"></div>
+                            <div class="dropdown bouton d-flex flex-column justify-content-around column">                                 
+                                <div class="form-group col-12 d-flex flex-row justify-content-around">
+                                    <div class="d-flex col-11">
+                                        <select class="custom-select" id="colorselect" required>
+                                            <option value="">Choisir la couleur</option>
+                                        </select>
                                     </div>
-                                </button> 
-                                <div class="ajout row justify-content-between">
-                                    <button type="button" class="btn btn-secondary" id="boutonPanier" style = "width : 2.5rem";>
-                                        -
-                                    </button> 
-                                    <p class="card-text col md-4 font-weight-bold" id="quantite">
-                                        1
-                                    </p>                                                          
-                                    <button type="button" class="btn btn-secondary" id="boutonPanier" style = "width : 2.5rem";>
-                                        +
-                                    </button>                                    
+                                    <div class="ajout d-flex flex-row" id="">
+                                        <button type="button" id="moins" class="btn btn-secondary d-flex justify-content-center" style = "height : 2.5rem;  width : 2rem">
+                                            -
+                                        </button> 
+                                        <p class="card-text col md-4 font-weight-bold d-flex justify-content-center align-items-center" id="quantite">
+                                            0
+                                        </p>        
+                                        <button type="button" value="plus" id="plus" class="btn btn-secondary d-flex justify-content-center" style = "height : 2.5rem; width : 2rem">
+                                            +
+                                        </button>                                    
+                                    </div>
                                 </div>
-                            </div> 
+                                <div class="bouton d-flex flex-row justify-content-around mt-4">
+                                    <button type="button" id="ajoutpanier" class="btn btn-secondary d-flex justify-content-center" style = "height : 2.5rem;">
+                                        Ajout au panier
+                                    </button> 
+                                    <button type="button" id="retouraccueil" class="btn btn-secondary d-flex justify-content-center" onclick style = "height : 2.5rem;">
+                                        <a href="index.html" class="text-white">
+                                            Retour accueil
+                                        </a>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>    
-            <footer class="row bg-info mt-4">
+            <footer class="row bg-dark mt-4 fixed-bottom">
                 <div class="container">
                     <ul class="inline pt-4 d-flex justify-content-around ">
                         <li class="list-inline-item">

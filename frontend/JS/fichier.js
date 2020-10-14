@@ -20,7 +20,7 @@ function recupBisounours (){
                         console.log(reponse[i]["name"]);
                         let bear = document.getElementById("contenu").innerHTML;
                         console.log(bear); 
-                        bear=bear.replace("[url]",reponse[i]["imageUrl"]);
+                        bear=bear.replace("img.jpeg",reponse[i]["imageUrl"]);
                         let urlBase = url + reponse[i]["_id"]; 
                         bear=bear.replace("[id]",urlBase);
                         bear=bear.replace("[title]",reponse[i]["name"]);
