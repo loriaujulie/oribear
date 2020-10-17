@@ -14,7 +14,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Fondamento&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">     
     </head>
-    <body>      
+    <body class="container-fluid bg-info">      
         <div class="container-fluid bg-info">
             <header class="row bg-info d-flex justify-content-around">        
                 <div class="title font-weight-bold display-4">
@@ -57,7 +57,7 @@
             </div>          
             <div class="row justify-content-around mt-4 mb-4" id="result">
                 <div class="cache d-none " id="contenu">
-                    <div class="card [id] mt-4 shadow-lg p-3 mb-5" style="width: 35rem;">
+                    <div class="card [id] mt-4 shadow-lg p-3 mb-5" style="width: 30rem;">
                         <img src="img.jpeg" class="card-img-top" alt="ours à vendre" id="img">
                         <div class="card-body d-flex flex-column justify-content-between">
                             <h5 class="card-title text-center">[title]</h5>
@@ -65,32 +65,27 @@
                             <p class="card-text text-center font-weight-bold">[price]</p>
                             <div class="dropdown bouton d-flex flex-column justify-content-around column">                                 
                                 <div class="form-group col-12 d-flex flex-row justify-content-around">
-                                    <div class="d-flex col-11">
+                                    <div class="d-flex col-9">
                                         <select class="custom-select" id="colorselect" required>
                                             <option value="">Choisir la couleur</option>
                                         </select>
                                     </div>
-                                    <div class="ajout d-flex flex-row" id="">
-                                        <button type="button" id="moins" class="btn btn-secondary d-flex justify-content-center" style = "height : 2.5rem;  width : 2rem">
-                                            -
-                                        </button> 
-                                        <p class="card-text col md-4 font-weight-bold d-flex justify-content-center align-items-center" id="quantite">
-                                            0
-                                        </p>        
-                                        <button type="button" value="plus" id="plus" class="btn btn-secondary d-flex justify-content-center" style = "height : 2.5rem; width : 2rem">
-                                            +
-                                        </button>                                    
+                                    <div class="d-flex col-3">
+                                        <select class="custom-select" id="quantity" required>
+                                            <option value="">0</option>
+                                        </select>
+                                    </div>
                                     </div>
                                 </div>
                                 <div class="bouton d-flex flex-row justify-content-around mt-4">
-                                    <button type="button" id="ajoutpanier" class="btn btn-secondary d-flex justify-content-center" style = "height : 2.5rem;">
-                                        Ajout au panier
-                                    </button> 
                                     <button type="button" id="retouraccueil" class="btn btn-secondary d-flex justify-content-center" onclick style = "height : 2.5rem;">
                                         <a href="index.html" class="text-white">
                                             Retour accueil
                                         </a>
                                     </button>
+                                    <button type="button" id="ajoutpanier" class="btn btn-secondary d-flex justify-content-center" style = "height : 2.5rem;">
+                                        Ajout au panier
+                                    </button> 
                                 </div>
                             </div>
                         </div>
@@ -117,7 +112,8 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-        </script><script src="JS/produit.js"></script>  
+        </script>
+        <script src="JS/produit.js"></script>  
         <script>
             // $(document).ready(function(){            
             //     recupBisounoursProduits();
