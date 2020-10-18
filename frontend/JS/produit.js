@@ -7,16 +7,30 @@ if(queryString == ""){
 //////définition de la variable propre à chaque ours //////
 let url = "http://localhost:3000/api/teddies/" + queryString;
 
+/////Création d'un constructor réutilisable contenant les informations à afficher et conserver/////
+class produit {
+    constructor(imageUrl, name, price, colors, qtty) {
+    this.imageUrl = imageUrl,
+    this.name = name,
+    this.price = price,
+    this.colors = colors,
+    this.qtty = qtty
+    }
+};
+/////initialisation de la variable listeProduits
+let listeProduit = null;
+
 //////Requête vers l'url//////
 fetch(url)
 //////Quand la requête aboutit//////
     .then((response)=> response.json())
     //////Alors il exécutera la fonction suivante //////
     .then((o)=>{ 
+        listeProduit = new produit;
         ////// variable précisant le chemin de la div à récupérer//////
         let bear = document.getElementById("contenu").innerHTML;
         //////pour chaque emplacement du html, on remplace par les retours de requête //////
-        bear=bear.replace("img.jpeg",o.imageUrl);     
+        bear=bear.replace("img.jpg",o.imageUrl);     
         bear=bear.replace("[title]",o.name);
         bear=bear.replace("[description]",o.description);
         bear=bear.replace("[price]",o.price /100 + " €");  
@@ -35,38 +49,28 @@ fetch(url)
                 //////intégration des options//////
                 select.appendChild(options);
             }
-        }
+        } 
+        /////
+        let moinsOurs = document.getElementById("moins");
+        /////
+        moinsOurs.addEventListener("click", function (){            
+            /////variable contenant la valeur de l'élément quantité/////
+            let quantite = document.getElementById("quantite").innerHTML;
+            ///// condition selon laquelle la fonction ne s'applique que si la quantité est supérieure à 1/////
+            if(parseInt(quantite) > 1){
+                ///// /////
+                document.getElementById("quantite").innerHTML = parseInt(quantite)-1;
+            }
+        });
+        let plusOurs = document.getElementById("plus");
+        plusOurs.addEventListener("click", function (){
+            //valeur de l'élement
+            let quantite = document.getElementById("quantite").innerHTML;
+            //l'élement lui-même dont on modifie la valeur
+            document.getElementById("quantite").innerHTML = parseInt(quantite)+1;            
+        }); 
     })
     .catch(erreur => console.log("Nous rencontrons une erreur : " + erreur));
-
-
-//////////////////// TENTATIVE - ET + pour le panier /////////////////////
-// let nombreBear = 0;   
-// let quantite = document.getElementById("quantite").innerHTML;
-// let plusOurs = document.getElementById("plus");
-// for (let j=0; j<1; j++){
-//     addEventListener("click", function () {
-//         nombreBear++;
-//         console.log(nombreBear);
-//         quantite.innerHTML = parseInt(nombreBear);
-// })};
-
-// for (let j=0; j<1; j--){
-//     addEventListener("click", function () {
-//         nombreBear--;
-//         console.log(nombreBear);
-//         quantite.innerHTML;
-// })};
-
-////////////////////////CHOIX DE LA QUANTITE ///////////////
-//////Création de liste déroulante relative à la quantité d'ours//////
-let choice = document.getElementById('quantity');
-    for (let i = 1; i<11; i++){
-        let qtty = document.createElement('option');
-        qtty.value = i;
-        qtty.innerHTML = i;
-        choice.appendChild(qtty);
-    }
 
 /*Clic sur le bouton du produit*/
 //addEventListener a plusieurs paramètres car c'est une méthode
@@ -74,37 +78,19 @@ let choice = document.getElementById('quantity');
 // deuxième paramètre = fonction de callback - ne s'appliquera qu'une fois le clic fait - pas besoin de lui donner de nom car ne sera pas réappelée
 
 
-
-/////////////récupération tableau contenant les infos à mettre dans localstorage//////
-// let panier = [imageUrl, name, price, colors];
-
 ///////////////////////////AJOUT D'UN PRODUIT AU PANIER //////////////////////////
 let ajoutPanier = document.getElementById("ajoutpanier");
-class produit {
-    constructor(imageUrl, name, price, colors, qtty) {
-    this.imageUrl = imageUrl,
-    this.name = name,
-    this.price = price,
-    this.colors = colors,
-    this.stty = qtty
-    }
-};
+
 ajoutPanier.addEventListener("click", function() {
-    let produit = new produit(imageUrl[i], name[i], price[i], colors[i], qtty[i]);
-        // if (produit != null) {
-            localStorage.setItem (produit, JSON.stringify(""));
-        // }
-        // else{
-        //     localStorage.setItem ('ajout', keyvalue);
-        // }
+    listeProduit.qtty = document.getElementById("quantite").innerHTML;
+        if (produit != null) {
+            localStorage.setItem (produit, JSON.stringify("produit"));
+        }
+        else{
+            localStorage.setItem ("'ajout', keyvalue");
+        }
 });
 
-
-
-
-// /*PRODUITS*/
-// const color = "colors";
-// const tab = ["colors","_id","name","price","imageUrl","description"];
 
 
 // function ajout (){
