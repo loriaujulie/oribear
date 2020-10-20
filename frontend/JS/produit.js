@@ -9,18 +9,18 @@ let url = "http://localhost:3000/api/teddies/" + queryString;
 
 /////Création d'un constructor réutilisable contenant les informations à afficher et conserver/////
 class produit {
-    constructor(imageUrl, name, price, colors, qtty) {
+    constructor(imageUrl, name, price, colors, _id) {
     this.imageUrl = imageUrl,
     this.name = name,
     this.price = price,
     this.colors = colors,
-    this.qtty = qtty
+    this.id = _id
     }
 };
 /////initialisation de la variable listeProduits
 let listeProduit = null;
 
-//////Requête vers l'url//////
+//////Requête vers l'url - fetxh = fonction asynchrone //////
 fetch(url)
 //////Quand la requête aboutit//////
     .then((response)=> response.json())
@@ -72,6 +72,7 @@ fetch(url)
     })
     .catch(erreur => console.log("Nous rencontrons une erreur : " + erreur));
 
+
 /*Clic sur le bouton du produit*/
 //addEventListener a plusieurs paramètres car c'est une méthode
 //premier paramètre = type d'écouteur d'évènement - ici au clic de la souris
@@ -81,16 +82,42 @@ fetch(url)
 ///////////////////////////AJOUT D'UN PRODUIT AU PANIER //////////////////////////
 let ajoutPanier = document.getElementById("ajoutpanier");
 
-ajoutPanier.addEventListener("click", function() {
-    listeProduit.qtty = document.getElementById("quantite").innerHTML;
-        if (produit != null) {
-            localStorage.setItem (produit, JSON.stringify("produit"));
-        }
-        else{
-            localStorage.setItem ("'ajout', keyvalue");
-        }
+//vérif que localstorage est bien reconnu//
+localStorage.setItem ("produit1", "voiture");
+localStorage.setItem ("produit2", "voiture");
+localStorage.setItem ("produit3", "garage");
+
+
+
+ajoutPanier.addEventListener("click", function(e) {
+    e.preventDefault();
+    liste = new produit;
+    let ajoutLocalStorage = produit.value;
+        // if (produit != null) {    
+        localStorage.setItem ("produit", JSON.stringify(produit));       
+            // console.log(produit);
+        // }
+        // else{
+        //     localStorage.setItem ("erreur");
+        // }
 });
 
+
+
+// Méthode de stockage document.getElementById('stockage').onclick = function() { 
+//     if(typeof localStorage!='undefined' && JSON) {
+// //     let coordonnees = { nom:document.getElementById('nom').value, prenom:document.getElementById('prenom').value, ville:document.getElementById('ville').value, }; 
+// localStorage.setItem('coord',JSON.stringify(coordonnees)); alert("Mémorisation effectuée"); }
+// // else alert("localStorage n'est pas supporté");};
+
+// // // Méthode de lecture
+// // document.getElementById('lecture').onclick = function() { 
+//     if(typeof localStorage!='undefined' && JSON) {
+// // let coordonnees = JSON.parse(localStorage.getItem('coord')); document.getElementById('nom').value = coordonnees.nom; document.getElementById('prenom').value = coordonnees.prenom; document.getElementById('ville').value = coordonnees.ville;
+// // alert("Lecture effectuée");
+// // } else {
+//     alert("localStorage n'est pas supporté");
+// };
 
 
 // function ajout (){
