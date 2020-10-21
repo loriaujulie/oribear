@@ -60,11 +60,34 @@
                     </div>
                 </div>
             </div>  
-            <section class="selection text-center">
-                <h2>Rappel de votre sélection</h2>
-                <p class="price">
-
+            <section class="selection text-center">               
+                <p class="price column">
+                    <table class="column">
+                        <thead>
+                            <tr>
+                                <th colspan="3" class="bg-dark text-light col-12"> 
+                                    <h2>Rappel de votre sélection</h2>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="tableau">
+                            <tr class="cache d-none" id="lignes">
+                                <td class="img.jpg"></td>
+                                <td class="name">title</td>
+                                <td class="price">price</td>
+                                <td class="totalPrice"></td>
+                            </tr>
+                        </tbody>
+                    </table>                
                 </p>
+                <div class="bouton d-flex flex-row justify-content-around mt-4">
+                    <button type="button" id="retouraccueil" class="btn btn-secondary d-flex justify-content-center" onclick style = "height : 2.5rem;">
+                        Vider le panier
+                    </button>
+                    <button type="button" id="ajoutpanier" class="btn btn-secondary d-flex justify-content-center" style = "height : 2.5rem;">
+                        Valider panier
+                    </button> 
+                </div>
             </section>
             <form class="px-4 py-3 text-center" method="post" action="">
                 <div class="form-group">

@@ -26,7 +26,6 @@ fetch(url)
     .then((response)=> response.json())
     //////Alors il exécutera la fonction suivante //////
     .then((o)=>{ 
-        listeProduit = new produit;
         ////// variable précisant le chemin de la div à récupérer//////
         let bear = document.getElementById("contenu").innerHTML;
         //////pour chaque emplacement du html, on remplace par les retours de requête //////
@@ -48,9 +47,13 @@ fetch(url)
                 options.innerHTML = o.colors[i];
                 //////intégration des options//////
                 select.appendChild(options);
-            }
+            }               
+        
+        let liste = document.getElementById("colorselect");
+        let colorSelect = liste.options[liste.selectedIndex].text;
+        listeProduit = [o.imageUrl,o.name,o.price/100, colorSelect];
         } 
-        /////
+
         let moinsOurs = document.getElementById("moins");
         /////
         moinsOurs.addEventListener("click", function (){            
@@ -58,7 +61,7 @@ fetch(url)
             let quantite = document.getElementById("quantite").innerHTML;
             ///// condition selon laquelle la fonction ne s'applique que si la quantité est supérieure à 1/////
             if(parseInt(quantite) > 1){
-                ///// /////
+                /////  /////
                 document.getElementById("quantite").innerHTML = parseInt(quantite)-1;
             }
         });
@@ -71,54 +74,13 @@ fetch(url)
         }); 
         //////////////////////AJOUT D'UN PRODUIT AU LOCALSTORAGE///////////////
         document.getElementById("ajoutpanier").addEventListener("click", function() {
-        console.log(produit);
             if (produit != null) {    
-                localStorage.setItem(JSON.stringify(o.name), parseInt(quantite));
-                // alert("Le produit a été ajouté au panier");
-            }
-            else{
-                localStorage.setItem ("erreur");
+                let quantite = document.getElementById("quantite").innerHTML;
+                localStorage.setItem(JSON.stringify(listeProduit), parseInt(quantite));
+                alert("Le produit a été ajouté au panier");         
+            } else {
+                localStorage.setItem ("erreur");            
             }});
         })
     .catch(erreur => console.log("Nous rencontrons une erreur : " + erreur))
 
-// document.getElementById("ajoutpanier").addEventListener("click", function(e) {
-//     e.preventDefault();
-//     liste = new produit;
-//     let ajoutLocalStorage = produit.value;
-//         // if (produit != null) {    
-//         localStorage.setItem ("produit", JSON.stringify(produit));       
-//             // console.log(produit);
-//         // }
-//         // else{
-//         //     localStorage.setItem ("erreur");
-//         // }
-// });
-
-
-
-// Méthode de stockage document.getElementById('stockage').onclick = function() { 
-//     if(typeof localStorage!='undefined' && JSON) {
-// //     let coordonnees = { nom:document.getElementById('nom').value, prenom:document.getElementById('prenom').value, ville:document.getElementById('ville').value, }; 
-// localStorage.setItem('coord',JSON.stringify(coordonnees)); alert("Mémorisation effectuée"); }
-// // else alert("localStorage n'est pas supporté");};
-
-// // // Méthode de lecture
-// // document.getElementById('lecture').onclick = function() { 
-//     if(typeof localStorage!='undefined' && JSON) {
-// // let coordonnees = JSON.parse(localStorage.getItem('coord')); document.getElementById('nom').value = coordonnees.nom; document.getElementById('prenom').value = coordonnees.prenom; document.getElementById('ville').value = coordonnees.ville;
-// // alert("Lecture effectuée");
-// // } else {
-//     alert("localStorage n'est pas supporté");
-// };
-
-
-// function ajout (){
-//     let productNumber = localStorage.getItems('ajout');
-//     if (productNumber) {
-//         localStorage.setItem ('ajout', value);
-//     }
-//     else{
-//         localStorage.setItem ('ajout', keyvalue);
-//     }
-// };
