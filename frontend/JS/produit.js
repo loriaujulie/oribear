@@ -69,38 +69,31 @@ fetch(url)
             //l'élement lui-même dont on modifie la valeur
             document.getElementById("quantite").innerHTML = parseInt(quantite)+1;            
         }); 
-    })
-    .catch(erreur => console.log("Nous rencontrons une erreur : " + erreur));
+        //////////////////////AJOUT D'UN PRODUIT AU LOCALSTORAGE///////////////
+        document.getElementById("ajoutpanier").addEventListener("click", function() {
+        console.log(produit);
+            if (produit != null) {    
+                localStorage.setItem(JSON.stringify(o.name), parseInt(quantite));
+                // alert("Le produit a été ajouté au panier");
+            }
+            else{
+                localStorage.setItem ("erreur");
+            }});
+        })
+    .catch(erreur => console.log("Nous rencontrons une erreur : " + erreur))
 
-
-/*Clic sur le bouton du produit*/
-//addEventListener a plusieurs paramètres car c'est une méthode
-//premier paramètre = type d'écouteur d'évènement - ici au clic de la souris
-// deuxième paramètre = fonction de callback - ne s'appliquera qu'une fois le clic fait - pas besoin de lui donner de nom car ne sera pas réappelée
-
-
-///////////////////////////AJOUT D'UN PRODUIT AU PANIER //////////////////////////
-let ajoutPanier = document.getElementById("ajoutpanier");
-
-//vérif que localstorage est bien reconnu//
-localStorage.setItem ("produit1", "voiture");
-localStorage.setItem ("produit2", "voiture");
-localStorage.setItem ("produit3", "garage");
-
-
-
-ajoutPanier.addEventListener("click", function(e) {
-    e.preventDefault();
-    liste = new produit;
-    let ajoutLocalStorage = produit.value;
-        // if (produit != null) {    
-        localStorage.setItem ("produit", JSON.stringify(produit));       
-            // console.log(produit);
-        // }
-        // else{
-        //     localStorage.setItem ("erreur");
-        // }
-});
+// document.getElementById("ajoutpanier").addEventListener("click", function(e) {
+//     e.preventDefault();
+//     liste = new produit;
+//     let ajoutLocalStorage = produit.value;
+//         // if (produit != null) {    
+//         localStorage.setItem ("produit", JSON.stringify(produit));       
+//             // console.log(produit);
+//         // }
+//         // else{
+//         //     localStorage.setItem ("erreur");
+//         // }
+// });
 
 
 
