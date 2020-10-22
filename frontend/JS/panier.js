@@ -1,6 +1,7 @@
 
+
 ///////////////////////////RECUPERATION DES PRODUITS DANS LE LOCALSTORAGE //////////////////////////
-// ///// Définition de la variable URL /////
+///// Définition de la variable URL /////
 let url = "http://localhost:3000/api/teddies/";
 
 class produit {
@@ -10,18 +11,23 @@ class produit {
     this.price = price,
     this.colors = colors}
 };
-
-document.getElementById("ajoutpanier").addEventListener("click", function() {
+fetch(url)
+//////Quand la requête aboutit//////
+    .then((response)=> response.json())
+    //////Alors il exécutera la fonction suivante //////
+    .then((o)=>{ 
     let tableau = document.getElementById('tableau');
     // Récupère toutes les key
     for ( let i = 0 ; i < localStorage.length; i++) {
+        console.log(localStorage)
         let recapTableau = document.getElementById("lignes").innerHTML;
+        listeProduit = [o.imageUrl,o.name,o.price/100];
         ////////////On convertit la chaîne de caractères en un objet //////////
-        let infoProduit = JSON.parse(localStorage.getItem((listeProduit), quantite));
-        let ligne = document.createElement('ligne');
-        ligne.value = listeProduit[i];
-        ligne.innerHTML = listeProduit[i];
-        select.appendChild(ligne);
+        let infoProduit = JSON.parse(localStorage.getItem((listeProduit), value));
+        // let ligne = document.createElement('ligne');
+        // ligne.value = listeProduit[i];
+        // ligne.innerHTML = listeProduit[i];
+        // select.appendChild(ligne);
         // let produit = new produit(imageUrl[i], name[i], price[i], colors[i], qtty[i]);
         recapTableau=recapTableau.replace("img.jpg", imageUrl);     
         recapTableau=recapTableau.replace("title",name);
@@ -33,34 +39,22 @@ document.getElementById("ajoutpanier").addEventListener("click", function() {
         // }
         //     
         // }
-        
-    } 
+    }});
+
+// let totalPrice = getElementById("totalPrice").innerHTML;
+// totalPrice = price * quantite;
+////////// Bouton vider le panier //////////
+document.getElementById("vider").addEventListener("click", function() {
+localStorage.removeItem();
 });
 
-let totalPrice = getElementById("totalPrice").innerHTML;
-totalPrice = price * quantite;
-
-//creation du bouton pour effacer la ligne du panier
-let viderLePanier = document.getElementsByClassName('viderpanier');
-for (let i = 0; i < viderLePanier.length; i++) {
-    let button = viderLePanier[i]
-    button.addEventListener('click', function(event){
-    ////// Mise en place d'une confirmation avant l'exécution de la demande //////
-    let fermeture = prompt("Etes-vous sûr de vouloir annuler la commande ?");
-    if (fermeture == "oui") {
-        let buttonClicked = event.target
-        buttonClicked.parentElement.parentElement.remove()
-            updateCartTotal()
-    } else if(fermeture == "non") {
-        alert("Nous sommes soulagés");
-    }})};
 /* <td><button class="btn btn-danger" type="button">Effacer</button></td> */
 
 
 
 /////////////////////POUR L'ENVOI DU FORMULAIRE ////////////////////////
 
-// Empêcher le form d'être soumis MDN - A garder
+// Empêcher le form d'être soumis - MDN - A garder
 document.querySelector("form").addEventListener('submit', function(e) {
     e.preventDefault();
     let name = document.querySelector("#nom").value;
