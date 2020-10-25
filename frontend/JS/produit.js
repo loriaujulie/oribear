@@ -7,16 +7,6 @@ if(queryString == ""){
 //////définition de la variable propre à chaque ours //////
 let url = "http://localhost:3000/api/teddies/" + queryString;
 
-/////Création d'un constructor réutilisable contenant les informations à afficher et conserver/////
-class produit {
-    constructor(imageUrl, name, price, colors, _id) {
-    this.imageUrl = imageUrl,
-    this.name = name,
-    this.price = price,
-    this.colors = colors,
-    this.id = _id
-    }
-};
 /////initialisation de la variable listeProduits
 let listeProduit = null;
 
@@ -27,17 +17,18 @@ fetch(url)
     //////Alors il exécutera la fonction suivante //////
     .then((o)=>{ 
         ////// variable précisant le chemin de la div à récupérer//////
-        let bear = document.getElementById("contenu").innerHTML;
+        let bear = document.getElementById("bear").innerHTML;
         //////pour chaque emplacement du html, on remplace par les retours de requête //////
         bear=bear.replace("img.jpg",o.imageUrl);     
         bear=bear.replace("[title]",o.name);
         bear=bear.replace("[description]",o.description);
         bear=bear.replace("[price]",o.price /100 + " €");  
-        //////à l'emplacement result, le contenu ci-dessus sera intégré//////         
+        //////à l'emplacement result, le bear ci-dessus sera intégré//////         
         document.getElementById('result').innerHTML = bear;
         //////création de la variable relative à l'emplacement de colorselect//////
         let select = document.getElementById('colorselect');
-        //////création de la boucle s'appliquant sur toute la longueur du tableau d'option de couleurs//////
+
+        ////// BOUCLE CREANT LES OPTIONS DE PERSONNALISATION DES COULEURS //////
         for (let i = 0; i<=o.colors.length; i++){
             //////anticipation du problème selon lequel il pourrait ne pas y avoir de couleur définie//////
             if(o.colors[i] != undefined){
@@ -47,15 +38,13 @@ fetch(url)
                 options.innerHTML = o.colors[i];
                 //////intégration des options//////
                 select.appendChild(options);
+                let colorSelect = select.options[select.selectedIndex].text;
+                listeProduit = [o.imageUrl,o.name,o.price/100, colorSelect];
             }               
-        
-        let liste = document.getElementById("colorselect");
-        let colorSelect = liste.options[liste.selectedIndex].text;
-        listeProduit = [o.imageUrl,o.name,o.price/100, colorSelect];
         } 
 
+        ////////////////////// AUGMENTER LA QUANTITE /////////////// 
         let moinsOurs = document.getElementById("moins");
-        /////
         moinsOurs.addEventListener("click", function (){            
             /////variable contenant la valeur de l'élément quantité/////
             let quantite = document.getElementById("quantite").innerHTML;
@@ -65,21 +54,27 @@ fetch(url)
                 document.getElementById("quantite").innerHTML = parseInt(quantite)-1;
             }
         });
+
+        ////////////////////// DIMINUER LA QUANTITE /////////////// 
         let plusOurs = document.getElementById("plus");
         plusOurs.addEventListener("click", function (){
-            //valeur de l'élement
+            // valeur de l'élement //
             let quantite = document.getElementById("quantite").innerHTML;
-            //l'élement lui-même dont on modifie la valeur
+            //l'élement lui-même dont on modifie la valeur //
             document.getElementById("quantite").innerHTML = parseInt(quantite)+1;            
         }); 
+
         //////////////////////AJOUT D'UN PRODUIT AU LOCALSTORAGE///////////////
-        document.getElementById("ajoutpanier").addEventListener("click", function() {
-            if (produit != null) {    
-                let quantite = document.getElementById("quantite").innerHTML;
+        document.getElementById("ajoutpanier").addEventListener("click", function() {            
+            let select = document.getElementById("colorselect");
+            let colorSelect = select.options[select.selectedIndex].text;
+            if (listeProduit !=  null && colorSelect != "Choisir la couleur") {
+                listeProduit = [o.imageUrl,o.name,o.price/100, colorSelect];
+                quantite = document.getElementById("quantite").innerHTML;
                 localStorage.setItem(JSON.stringify(listeProduit), parseInt(quantite));
                 alert("Le produit a été ajouté au panier");         
             } else {
-                localStorage.setItem ("erreur");            
+                alert("Veuillez préalablement choisir une couleur");         
             }});
         })
     .catch(erreur => console.log("Nous rencontrons une erreur : " + erreur))

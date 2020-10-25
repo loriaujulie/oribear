@@ -70,6 +70,7 @@
                                 <td class="name">title</td>
                                 <td class="price">price</td>
                                 <td class="totalPrice" id="totalPrice"></td>
+                                <td class="supprimerarticle"><i></i></td>
                             </tr>
                             <tr>
                                 <td colspan="3" id="total">Prix total</td>
@@ -85,64 +86,52 @@
                         Valider panier
                     </button> 
                 </div>
+                <div class="d-flex justify-content-center mt-4">
+                    <button type="button" id="retouraccueil" class="btn btn-secondary btn btn-outline-info d-flex justify-content-center" onclick style = "height : 2.5rem;">
+                        <a href="index.html"class="text-white">
+                            Retour à la sélection
+                        </a>
+                    </button>
+                </div>
             </section>
-            <form class="px-4 py-3 text-center" method="post" action="">
-                <div class="form-group">
-                    <h3>
-                        Veuillez remplir le formulaire ci-dessous pour recevoir votre(vos) Teddy(ies) :
-                    </h3>
+            <form class="px-4 py-3 text-center" method="post" action="">                
+                <h3>
+                    Veuillez remplir le formulaire ci-dessous pour recevoir votre(vos) Teddy(ies) :
+                </h3>
+                <div class="form-group text-left">
                     <div class="form-group">
-                        <label for="nom" class="form-group col-lg-12">
+                        <label for="nom" class="form-group col-2 mr-0 pr-0 mb-4 mt-4">
                             Votre nom
                         </label>
-                        <input type="text" name="nom" id="nom" placeholder="BYRNISON" class="form-group" autofocus required/>
+                        <input type="text" name="nom" id="nom" placeholder="BYRNISON" class="form-group col-3 text-center ml-0 pl-0" autofocus required/>
                     </div>
                     <div class="form-group">
-                        <label for="prenom" class="form-group col-lg-12">
+                        <label for="prenom" class="form-group col-2 mr-0 pr-0">
                             Votre prénom
                         </label>
-                        <input type="text" name="prenom" id="prenom" placeholder="Iorek" class="form-group"  required/>
+                        <input type="text" name="prenom" id="prenom" placeholder="Iorek" class="form-group col-3 text-center ml-0 pl-0"  required/>
                     </div>
                     <div class="form-group">
-                        <label for="email" class="form-group col-lg-12"> 
+                        <label for="email" class="form-group col-2 mr-0 pr-0"> 
                             Votre email     
                         </label>
-                        <input type="email" name="email" id="email" placeholder="iyrnison@gmail.com" required/>
+                        <input type="email" name="email" id="email" placeholder="iyrnison@gmail.com" class="form-group col-3 text-center ml-0 pl-0" required/>
                     </div>
-                    <div class="form-group col-lg-12" id="address">
+                    <div class="form-group" id="address">
                             <div class="form-group col-lg-12">
                                 Votre adresse
+                                <input type="text" class="address form-group col-5 text-center ml-4" placeholder="La croisée des mondes" required/>
                             </div>
-                            <input type="number" min="0" max="99000" class="number form-group col-2" placeholder="37" required/>
-                            <input type="text" class="address form-group" placeholder="La croisée des mondes" required/>
-                            <br><input type="number" min="0" max="990000" class="number form-group  col-2" placeholder="75000" required/>
-                            <input type="text" class="address form-group" placeholder="PARIS" required/>
+                            <div class="form-group col-lg-12 column">
+                                Code postal
+                                <input type="number" min="0" max="990000" class="number form-group col-2 text-center ml-4" placeholder="75000" required/>
+                            </div>
+                            <div class="form-group col-lg-12 column">
+                                Ville
+                                <input type="text" class="address form-group text-center ml-4 col-4" placeholder="PARIS" required/>
+                            </div>
                     </div>
-                    <div class="form-group col-lg-12">
-                    <label for="Country">Country : </label>
-                        <select id="Country">
-                            <option value="fr">
-                                France
-                            </option>
-                            <option value="be">
-                                Belgium
-                            </option>
-                            <option value="ch">
-                                Switzerland
-                            </option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-group col-lg-12">
-                            Un message à nous passer ?
-                        </div>
-                        <textarea class="col-lg-4">
-                        </textarea>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" class="form-check-input" name="CGV" required/> J'accepte les conditions générales de vente
-                    </div>
-                    <div class="form-group col-lg-12 mb-4 pb-4">
+                    <div class="form-group col-lg-12 mt-4  mb-4 pb-4">
                         <input class="btn btn-info" type="submit"> 
                     </div>     
                 </div>                                  

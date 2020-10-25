@@ -2,20 +2,20 @@
 
 ///////////////////////////RECUPERATION DES PRODUITS DANS LE LOCALSTORAGE //////////////////////////
 ///// Définition de la variable URL /////
-let url = "http://localhost:3000/api/teddies/";
+// let url = "http://localhost:3000/api/teddies/";
 
-class produit {
-    constructor(imageUrl, name, price, colors) {
-    this.imageUrl = imageUrl,
-    this.name = name,
-    this.price = price,
-    this.colors = colors}
-};
-fetch(url)
-//////Quand la requête aboutit//////
-    .then((response)=> response.json())
-    //////Alors il exécutera la fonction suivante //////
-    .then((o)=>{ 
+// class produit {
+//     constructor(imageUrl, name, price, colors) {
+//     this.imageUrl = imageUrl,
+//     this.name = name,
+//     this.price = price,
+//     this.colors = colors}
+// };
+// fetch(url)
+// //////Quand la requête aboutit//////
+//     .then((response)=> response.json())
+//     //////Alors il exécutera la fonction suivante //////
+//     .then((o)=>{ 
     let tableau = document.getElementById('tableau');
     // Récupère toutes les key
     for ( let i = 0 ; i < localStorage.length; i++) {
@@ -23,7 +23,7 @@ fetch(url)
         let recapTableau = document.getElementById("lignes").innerHTML;
         listeProduit = [o.imageUrl,o.name,o.price/100];
         ////////////On convertit la chaîne de caractères en un objet //////////
-        let infoProduit = JSON.parse(localStorage.getItem((listeProduit), value));
+        localStorage.getItem(JSON.parse(listeProduit, parseInt(quantite)));
         // let ligne = document.createElement('ligne');
         // ligne.value = listeProduit[i];
         // ligne.innerHTML = listeProduit[i];
@@ -39,14 +39,26 @@ fetch(url)
         // }
         //     
         // }
-    }});
+        ////////// Calcul du prix total par article //////////
+        let totalPrice = getElementById("totalPrice").innerHTML;
+        totalPrice = price * quantite;
+        ////////// calcul du prix total dans le panier //////////
+        
+        ////////// Bouton vider le panier //////////
+        document.getElementById("supprimerarticle").addEventListener("click", function() {
+            localStorage.removeItem();
+            });
 
-// let totalPrice = getElementById("totalPrice").innerHTML;
-// totalPrice = price * quantite;
-////////// Bouton vider le panier //////////
-document.getElementById("vider").addEventListener("click", function() {
-localStorage.removeItem();
-});
+        ////////// Bouton vider le panier //////////
+        document.getElementById("vider").addEventListener("click", function() {
+            localStorage.clear();
+            //// REFLECHIR AU RENVOI A LA PAGE D'ACCUEIL ////
+            window.location = "http://127.0.0.1:5500/frontend/index.html";
+            });
+        document.getElementById("selection").addEventListener("click", function() {
+        })};
+    // }});
+
 
 /* <td><button class="btn btn-danger" type="button">Effacer</button></td> */
 
@@ -66,18 +78,18 @@ document.querySelector("form").addEventListener('submit', function(e) {
   });
 
 /* vérification données formulaires*/
-let request = new XMLHttpRequest();
-request.open("POST", url + "/order");
-request.setRequestHeader("Content-Type", "application/json");
-request.send(JSON.parse(produit));
+// let request = new XMLHttpRequest();
+// request.open("POST", url + "/order");
+// request.setRequestHeader("Content-Type", "application/json");
+// request.send(JSON.parse(produit));
 
-submit.addEventListener('click', function() {
-    e.preventDefault();
-    let form = e.target;
-    fetch(form.action, { method: form.method, body: new FormData(form) })
-    .then(response => response.json())
-    .then(json => console.log(json))
-    return false;
-    })
-    .catch(erreur => console.log("Nous rencontrons une erreur : " + erreur));
+// submit.addEventListener('click', function() {
+//     e.preventDefault();
+//     let form = e.target;
+//     fetch(form.action, { method: form.method, body: new FormData(form) })
+//     .then(response => response.json())
+//     .then(json => console.log(json))
+//     return false;
+//     })
+//     .catch(erreur => console.log("Nous rencontrons une erreur : " + erreur));
              
