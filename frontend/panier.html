@@ -65,11 +65,11 @@
                             </tr>
                         </thead>
                         <tbody class="tableau">
-                            <tr class="cache d-none" id="lignes">
-                                <td class="img.jpg"></td>
-                                <td class="name">title</td>
-                                <td class="price">price</td>
-                                <td class="totalPrice" id="totalPrice"></td>
+                            <tr id="lignes">
+                                <td id="img.jpg"></td>
+                                <td id="name">[title]</td>
+                                <td id="price">price</td>
+                                <td id="totalPrice" id="totalPrice"></td>
                                 <td class="supprimerarticle"><i></i></td>
                             </tr>
                             <tr>
@@ -87,16 +87,14 @@
                     </button> 
                 </div>
                 <div class="d-flex justify-content-center mt-4">
-                    <button type="button" id="retouraccueil" class="btn btn-secondary btn btn-outline-info d-flex justify-content-center" onclick style = "height : 2.5rem;">
-                        <a href="index.html"class="text-white">
-                            Retour à la sélection
-                        </a>
+                    <button type="button" id="retouraccueil" class="btn btn-secondary btn btn-outline-info d-flex justify-content-center text-white" onclick="window.location.href = 'http://127.0.0.1:5500/frontend/index.html';" style = "height : 2.5rem;">
+                        Retour à la sélection
                     </button>
                 </div>
             </section>
             <form class="px-4 py-3 text-center" method="post" action="">                
                 <h3>
-                    Veuillez remplir le formulaire ci-dessous pour recevoir votre(vos) Teddy(ies) :
+                    Veuillez remplir le formulaire ci-dessous pour recevoir votre(vos) ours :
                 </h3>
                 <div class="form-group text-left">
                     <div class="form-group">

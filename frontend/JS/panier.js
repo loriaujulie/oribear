@@ -4,60 +4,65 @@
 ///// Définition de la variable URL /////
 // let url = "http://localhost:3000/api/teddies/";
 
-// class produit {
-//     constructor(imageUrl, name, price, colors) {
-//     this.imageUrl = imageUrl,
-//     this.name = name,
-//     this.price = price,
-//     this.colors = colors}
-// };
-// fetch(url)
-// //////Quand la requête aboutit//////
-//     .then((response)=> response.json())
-//     //////Alors il exécutera la fonction suivante //////
-//     .then((o)=>{ 
-    let tableau = document.getElementById('tableau');
-    // Récupère toutes les key
-    for ( let i = 0 ; i < localStorage.length; i++) {
-        console.log(localStorage)
-        let recapTableau = document.getElementById("lignes").innerHTML;
-        listeProduit = [o.imageUrl,o.name,o.price/100];
-        ////////////On convertit la chaîne de caractères en un objet //////////
-        localStorage.getItem(JSON.parse(listeProduit, parseInt(quantite)));
-        // let ligne = document.createElement('ligne');
-        // ligne.value = listeProduit[i];
-        // ligne.innerHTML = listeProduit[i];
-        // select.appendChild(ligne);
-        // let produit = new produit(imageUrl[i], name[i], price[i], colors[i], qtty[i]);
-        recapTableau=recapTableau.replace("img.jpg", imageUrl);     
-        recapTableau=recapTableau.replace("title",name);
-        recapTableau=recapTableau.replace("price",price/100); 
-        recapTableau=recapTableau.replace("[lienProduit]", "produit.html" + "?" + [i]["_id"]);   
-        
-            /////Remplace les données-type de result par les données récupérées, en intégrant cela dans la div contenu /////
-            tableau.innerHTML += recapTableau;    
-        // }
-        //     
-        // }
-        ////////// Calcul du prix total par article //////////
-        let totalPrice = getElementById("totalPrice").innerHTML;
-        totalPrice = price * quantite;
-        ////////// calcul du prix total dans le panier //////////
-        
-        ////////// Bouton vider le panier //////////
-        document.getElementById("supprimerarticle").addEventListener("click", function() {
-            localStorage.removeItem();
-            });
+class produit {
+    constructor(imageUrl, name, price, colors, quantite) {
+    this._imageUrl = imageUrl,
+    this._name = name,
+    this._price = price,
+    this._colors = colors,
+    this._quantite = quantite}
+};
 
-        ////////// Bouton vider le panier //////////
-        document.getElementById("vider").addEventListener("click", function() {
-            localStorage.clear();
-            //// REFLECHIR AU RENVOI A LA PAGE D'ACCUEIL ////
-            window.location = "http://127.0.0.1:5500/frontend/index.html";
-            });
-        document.getElementById("selection").addEventListener("click", function() {
-        })};
-    // }});
+////////// Bouton vider le panier //////////
+document.getElementById("vider").addEventListener("click", function() {
+    localStorage.clear();
+});
+
+
+//////////// Essai avec affichage qui fonctionne ////////////
+// localStorage.getItem("nounours");
+// let recapTableau = document.getElementById("name").innerHTML;
+// document.getElementById("name").innerHTML = localStorage.getItem("nounours")
+// alert(localStorage.getItem("nounours"))
+
+
+// for (i = 0; i < localStorage.length; i++) {
+//     x = localStorage.key(i);
+//     document.getElementById("name").innerHTML += x;
+//   }
+
+let tableau = document.getElementById('tableau');    
+const liste = new produit();
+let contenu = localStorage.getItem("ours");
+
+
+let produitLigne = localStorage.getItem("bearOurs");
+    // Récupère toutes les key
+for ( let i = 0 ; i < localStorage.length; i++) {
+    let produits = JSON.parse(produitLigne);
+    console.log(produits.imageUrl)
+    console.log(produits.name)
+    console.log(produits.price)
+    console.log(produits.color)
+    let recapTableau = document.getElementById("lignes").innerHTML;
+    document.getElementById("lignes").innerHTML = localStorage.getItem("bearOurs")
+    console.log(localStorage)  
+    
+    recapTableau=recapTableau.replace("img.jpg", produits.imageUrl);     
+    recapTableau=recapTableau.replace("title",produits.name);
+    recapTableau=recapTableau.replace("price",produits.price/100); 
+    recapTableau=recapTableau.replace("[lienProduit]", "produit.html" + "?" + [i]["_id"]);   
+    
+        /////Remplace les données-type de result par les données récupérées, en intégrant cela dans la div contenu /////
+        // tableau.innerHTML += recapTableau;    
+    // }
+    //     
+    // }
+    ////////// Calcul du prix total par article //////////
+    let totalPrice = getElementById("totalPrice").innerHTML;
+    totalPrice = price * quantite;
+    ////////// calcul du prix total dans le panier //////////
+};
 
 
 /* <td><button class="btn btn-danger" type="button">Effacer</button></td> */
