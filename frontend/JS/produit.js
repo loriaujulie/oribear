@@ -1,3 +1,5 @@
+///////////////////// PAGE PRODUIT.HTML /////////////////////
+
 //////définition de la constante permettant de récupérer l'url selon l'id//////
 const queryString = window.location.search.replace("?","");
 //////s'il n'y a pas d'id, renvoie vers la page d'accueil comprenant tous les ours//////
@@ -6,7 +8,7 @@ if(queryString == ""){
 }
 //////définition de la variable propre à chaque ours //////
 ////A MODIFIER UNE FOIS VARIABLE IMPORTEE////
-let url = "http://localhost:3000/api/teddies/" + queryString;
+url = url + queryString;
 
 //////Requête vers l'url - fetch = fonction asynchrone //////
 ////A MODIFIER UNE FOIS VARIABLE IMPORTEE////
@@ -75,12 +77,13 @@ fetch(url)
                 name: o.name, 
                 price : o.price/100,
                 color : colorSelect, 
-                quantite : parseInt(quantite)
+                quantite : parseInt(quantite),
+                id : o._id
             }
                         // if (listeProduit !=  null && colorSelect != "Choisir la couleur") {
             if (produits !=  null && colorSelect != "Choisir la couleur") {
             let produitLigne = JSON.stringify(produits);
-            localStorage.setItem("bearOurs", produitLigne);
+            localStorage.setItem("bearOurs_"+ produits.id+produits.color, produitLigne);
                         // listeProduit = [o.imageUrl,o.name,o.price/100, colorSelect, parseInt(quantite)];                
                         // localStorage.setItem("Ours"+o.name,JSON.stringify(listeProduit));
                 alert("Le produit a été ajouté au panier");         

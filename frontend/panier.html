@@ -55,29 +55,37 @@
                 </div>
             </div>     
             <section class="selection text-center">               
-                <p class="price column">
-                    <table class="column">
-                        <thead>
-                            <tr>
-                                <th colspan="3" class="bg-dark text-light col-12"> 
-                                    <h2>Rappel de votre sélection</h2>
-                                </th>
+                <div class="container-fluid">
+                    <div colspan="3" class="bg-light text-info col-12"> 
+                        <h2>Rappel de votre sélection</h2>
+                    </div>
+                    <table class="column col-12">
+                        <thead class="ml-4" colspan="12">
+                            <tr class="col-12 bg-info text-light lead"> 
+                                <th colspan="3"><h3>Photo</h3>                                                   </th>
+                                <th colspan="2">Nom de votre Ours</th>
+                                <th colspan="2">Couleur</th>
+                                <th colspan="1">Prix unitaire</th>
+                                <th colspan="1">Quantité</th>
+                                <th colspan="2">Prix total</th>
+                                <th colspan="1">Supprimer l'article</th>
                             </tr>
                         </thead>
-                        <tbody class="tableau">
-                            <tr id="lignes">
-                                <td id="img.jpg"></td>
-                                <td id="name">[title]</td>
-                                <td id="price">price</td>
-                                <td id="totalPrice" id="totalPrice"></td>
-                                <td class="supprimerarticle"><i></i></td>
-                            </tr>
-                            <tr>
-                                <td colspan="3" id="total">Prix total</td>
+                        <tbody id="tableau" class="ml-4 col-12 bg-dark text-light">
+                            <tr id="lignes" class="cache d-none " >
+                                <td  colspan="3">
+                                    <img src="img.jpg" class="img-thumbnail" width="400em" alt="ours choisi">   
+                                </td>
+                                <td id="name" colspan="2"><h4>[title]</h4></td>
+                                <td id="name" colspan="2"><h4>[couleur]</h4></td>
+                                <td id="price" colspan="1"><h4>[price]</h4></td>
+                                <td id="price" colspan="1"><h4>[quantite]</h4></td>
+                                <td id="totalprice" colspan="2"><h4>[prixtotal]</h4></td>
+                                <td class="supprimerarticle" colspan="1"><i></i></td>
                             </tr>
                         </tbody>
                     </table>                
-                </p>
+                </div>
                 <div class="bouton d-flex flex-row justify-content-around mt-4">
                     <button type="button" id="vider" class="btn btn-secondary btn btn-outline-info d-flex justify-content-center text-white" onclick style = "height : 2.5rem;">
                         Supprimer les produits
@@ -157,6 +165,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
         </script>
+        <script src="JS/variables.js"></script>  
         <script src="JS/panier.js"></script> 
     </body>
 </html>

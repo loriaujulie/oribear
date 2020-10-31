@@ -1,18 +1,18 @@
-// // // /*ACCUEIL*/
+///////////////////// PAGE INDEX.HTML /////////////////////
+
 //////////////// Requête visant à récupérer les données et les intégrer dans le DOM ////////////
-// ///// Définition de la variable URL /////
-let url = "http://localhost:3000/api/teddies/";
+
 /////Requête à l'url /////
 fetch(url)
 /////Promesse qui se resoud si accès aux données /////
     .then((response) => response.json())
     ///// Autre promesse qui se resoud si accès aux données /////
     .then((o) => { 
-        let result = document.getElementById('result');
+        result = document.getElementById('result');
         ////// la fonction s'éxecutera pour chaque donnée du tableau //////
         for (let i = 0; i < o.length; i++){       
             ////// Nécessaire de créer la variable ici pour qu'elle s'applique à chaque donnée du tableau //////     
-            let bear = document.getElementById("bear").innerHTML;
+            bear = document.getElementById("bear").innerHTML;
             ///// Chaque emplacement est remplacé par celui bear dans l'API /////
             bear=bear.replace("img.jpg",o[i].imageUrl);     
             bear=bear.replace("[title]",o[i].name);

@@ -1,3 +1,5 @@
+///////////////////// PAGE LISTANT LES VARIABLES /////////////////////
+
 ///// Initialisation de la variable url - variable visant à accéder à l'url - accueil.js et produit.js /////
 let url = "http://localhost:3000/api/teddies/";
 ///// Initialisation de la variable result - variable concernant la div d'emplacement des données - accueil.js /////
