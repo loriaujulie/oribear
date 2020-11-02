@@ -8,6 +8,8 @@ let result = null;
 let bear = null;
 ///// Initialisation de la variable listeProduit -  - produit.js /////
 let listeProduit = null;
+///// Initialisation de la variable listeProduit -  - produit.js /////
+let produit = null;
 ///// Initialisation de la variable select - liste des options de personnalisation de couleur - produit.js /////
 let select = null;
 ///// Initialisation de la variable options - variable créant la liste des options - produit.js /////
@@ -20,12 +22,16 @@ let plusOurs = null;
 let quantite = null;
 ///// Initialisation de la variable colorSelect - couleur choisie par l'utilisateur - produit.js  /////
 let colorSelect = null;
+///// Initialisation de la variable produitLigne - ensemble des données prêtes à être envoyées au lcoalstorage - produit.js /////
+let produitLigne = null;
 ///// Initialisation de la variable - variable permettant d'envisager le remplacement des données dans la page - panier.js  /////
 let tableau = null;
 ///// Initialisation de la variable tableau - variable permettant d'envisager le remplacement des données dans la page - panier.js /////
 let recapTableau = null;
 ///// Initialisation de la variable   /////
 let totalPrice = null;
+///// Initialisation de la variable   /////
+let prixFinal = null;
 ///// Initialisation de la variable   /////
 let name = null;
 ///// Initialisation de la variable   /////

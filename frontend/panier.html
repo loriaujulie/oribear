@@ -54,21 +54,21 @@
                     </h6>
                 </div>
             </div>     
-            <section class="selection text-center">               
+            <section class="selection text-center mt-4">               
                 <div class="container-fluid">
                     <div colspan="3" class="bg-light text-info col-12"> 
                         <h2>Rappel de votre sélection</h2>
                     </div>
-                    <table class="column col-12">
+                    <table class="column col-12 mt-4">
                         <thead class="ml-4" colspan="12">
                             <tr class="col-12 bg-info text-light lead"> 
-                                <th colspan="3"><h3>Photo</h3>                                                   </th>
-                                <th colspan="2">Nom de votre Ours</th>
-                                <th colspan="2">Couleur</th>
-                                <th colspan="1">Prix unitaire</th>
-                                <th colspan="1">Quantité</th>
-                                <th colspan="2">Prix total</th>
-                                <th colspan="1">Supprimer l'article</th>
+                                <th colspan="3"><h4>Photo</h4></th>
+                                <th colspan="2"><h4>Nom de votre Ours</h4></th>
+                                <th colspan="2"><h4>Couleur</h4></th>
+                                <th colspan="1"><h4>Prix unitaire</h4></th>
+                                <th colspan="1"><h4>Quantité</h4></th>
+                                <th colspan="2"><h4>Prix total</h4></th>
+                                <th colspan="1"><h4>Supprimer l'article</h3></th>
                             </tr>
                         </thead>
                         <tbody id="tableau" class="ml-4 col-12 bg-dark text-light">
@@ -76,15 +76,22 @@
                                 <td  colspan="3">
                                     <img src="img.jpg" class="img-thumbnail" width="400em" alt="ours choisi">   
                                 </td>
-                                <td id="name" colspan="2"><h4>[title]</h4></td>
-                                <td id="name" colspan="2"><h4>[couleur]</h4></td>
-                                <td id="price" colspan="1"><h4>[price]</h4></td>
-                                <td id="price" colspan="1"><h4>[quantite]</h4></td>
-                                <td id="totalprice" colspan="2"><h4>[prixtotal]</h4></td>
-                                <td class="supprimerarticle" colspan="1"><i></i></td>
+                                <td id="name" colspan="2"><h5>[title]</h5></td>
+                                <td id="name" colspan="2"><h5>[couleur]</h5></td>
+                                <td id="price" colspan="1"><h5>[price]</h5></td>
+                                <td id="price" colspan="1"><h5>[quantite]</h5></td>
+                                <td id="totalprice" colspan="2"><h5>[prixtotal]</h4></td>
+                                <td  colspan="1">
+                                    <button type="button"  id="supprimerarticle" class="bg-info" onclick>
+                                        <!-- <i class="far fa-trash-alt"></i> -->
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <h2 id="prixfinal"><span></span></h2> 
                             </tr>
                         </tbody>
-                    </table>                
+                    </table>            
                 </div>
                 <div class="bouton d-flex flex-row justify-content-around mt-4">
                     <button type="button" id="vider" class="btn btn-secondary btn btn-outline-info d-flex justify-content-center text-white" onclick style = "height : 2.5rem;">
@@ -100,48 +107,45 @@
                     </button>
                 </div>
             </section>
-            <form class="px-4 py-3 text-center" method="post" action="">                
+            <form class="px-4 py-3 col-12 text-center text-light" method="post" action="">                
                 <h3>
                     Veuillez remplir le formulaire ci-dessous pour recevoir votre(vos) ours :
                 </h3>
-                <div class="form-group text-left">
-                    <div class="form-group">
+                <p class="font-weight-bold">* Champs obligatoires</p>
+                <div class="form-group text-center">
+                    <div class="form-group" id="coordonnees">
                         <label for="nom" class="form-group col-2 mr-0 pr-0 mb-4 mt-4">
-                            Votre nom
+                            Votre nom *
                         </label>
-                        <input type="text" name="nom" id="nom" placeholder="BYRNISON" class="form-group col-3 text-center ml-0 pl-0" autofocus required/>
+                        <input type="text" name="nom" id="nom" placeholder="Nom" class="form-group col-3 ml-0 pl-0" autofocus required/>
                     </div>
                     <div class="form-group">
                         <label for="prenom" class="form-group col-2 mr-0 pr-0">
-                            Votre prénom
+                            Votre prénom *
                         </label>
-                        <input type="text" name="prenom" id="prenom" placeholder="Iorek" class="form-group col-3 text-center ml-0 pl-0"  required/>
+                        <input type="text" name="prenom" id="prenom" placeholder="Prénom" class="form-group col-3 ml-0 pl-0"  required/>
                     </div>
                     <div class="form-group">
                         <label for="email" class="form-group col-2 mr-0 pr-0"> 
-                            Votre email     
+                            Votre email *
                         </label>
-                        <input type="email" name="email" id="email" placeholder="iyrnison@gmail.com" class="form-group col-3 text-center ml-0 pl-0" required/>
+                        <input type="email" name="email" id="email" placeholder="Adresse email" class="form-group col-3 ml-0 pl-0" required/>
                     </div>
-                    <div class="form-group" id="address">
-                            <div class="form-group col-lg-12">
-                                Votre adresse
-                                <input type="text" class="address form-group col-5 text-center ml-4" placeholder="La croisée des mondes" required/>
-                            </div>
-                            <div class="form-group col-lg-12 column">
-                                Code postal
-                                <input type="number" min="0" max="990000" class="number form-group col-2 text-center ml-4" placeholder="75000" required/>
-                            </div>
-                            <div class="form-group col-lg-12 column">
-                                Ville
-                                <input type="text" class="address form-group text-center ml-4 col-4" placeholder="PARIS" required/>
-                            </div>
+                    <div class="form-group">
+                        <label for="adresse" class="form-group col-2 mr-0 pr-0">
+                            Votre adresse *
+                        </label>
+                            <div class="form-group d-flex flex-column align-content-center justify-content-around flex-wrap">
+                            <input type="text" id="address" class="address form-group col-5" placeholder="Adresse" required/>
+                            <input type="number" min="0" max="99000" class="number form-group col-5" placeholder="Code postal" required/>
+                            <input type="text" id="country" class="address form-group col-5" placeholder="Ville" required/>
+                        </div>
                     </div>
-                    <div class="form-group col-lg-12 mt-4  mb-4 pb-4">
-                        <input class="btn btn-info" type="submit"> 
+                    <div class="form-group col-lg-12 mt-4 text-center mb-4 pb-4">
+                        <input class="btn btn-info submit" type="submit"> 
                     </div>     
                 </div>                                  
-            </form>            
+            </form>
             <div class="row justify-content-around mb-4" id="result">
             </div>                 
             <footer class="row bg-info mt-4 fixed-bottom">

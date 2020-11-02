@@ -1,32 +1,9 @@
 ///////////////////// PAGE PANIER.HTML /////////////////////
 
 ///////////////////////////RECUPERATION DES PRODUITS DANS LE LOCALSTORAGE //////////////////////////
-///// Définition de la variable URL /////
-// let url = "http://localhost:3000/api/teddies/";
+tableau = document.getElementById('tableau'); 
 
-
-//////////// Essai avec affichage qui fonctionne ////////////
-// localStorage.getItem("nounours");
-// let recapTableau = document.getElementById("name").innerHTML;
-// document.getElementById("name").innerHTML = localStorage.getItem("nounours")
-// alert(localStorage.getItem("nounours"))
-
-
-// for (i = 0; i < localStorage.length; i++) {
-//     x = localStorage.key(i);
-//     document.getElementById("name").innerHTML += x;
-//   }
-
- tableau = document.getElementById('tableau');    
-// const liste = new produit();
-//  contenu = localStorage.getItem("ours");
-
-
-//  );
-    // Récupère toutes les key
-// for ( let i = 0 ; i < localStorage.length; i++) {
 for (let key in localStorage){
-    // console.log(key)
     produitLigne = localStorage.getItem(key);
     produits = JSON.parse(produitLigne);
     if(produits != null){
@@ -35,64 +12,141 @@ for (let key in localStorage){
         console.log(produits.name)
         console.log(produits.price)
         console.log(produits.color)
+        console.log(produits.id)
         recapTableau = document.getElementById("lignes").innerHTML;
-        // document.getElementById("lignes").innerHTML = localStorage.getItem("bearOurs");
-        // console.log(localStorage)  
         recapTableau=recapTableau.replace("img.jpg", produits.imageUrl);     
         recapTableau=recapTableau.replace("[title]",produits.name);               
         recapTableau=recapTableau.replace("[couleur]",produits.color); 
         recapTableau=recapTableau.replace("[price]",produits.price); 
         recapTableau=recapTableau.replace("[quantite]",produits.quantite);  
-        //     ////////// Calcul du prix total par article //////////
-        let totalPrice = document.getElementById("totalprice").innerHTML;
-        totalPrice = parseInt(produits.price) * parseInt(produits.quantite);
-        recapTableau=recapTableau.replace("[prixtotal]",parseInt(totalPrice));  
-        //     ////////// calcul du prix total dans le panier //////////
         
-// recapTableau=recapTableau.replace("[lienProduit]", "produit.html" + "?" + [i]["_id"]); 
+        ////////// Bouton vider le panier //////////
+        document.getElementById("vider").addEventListener("click", function() {
+            localStorage.clear();
+            tableau.innerHTML -= recapTableau;             
+            affichage = document.getElementById("tableau").innerHTML;
+            affichage.innerHTML += "PANIER VIDE";
 
-        /////Remplace les données-type de result par les données récupérées, en intégrant cela dans la div contenu /////
-        tableau.innerHTML += recapTableau;    
+        });
+        // ////////// Bouton supprimer article //////////        
+        document.getElementById("supprimerarticle").addEventListener("click", function() {
+            localStorage.removeItem("bearOurs_5be9c8541c9d440000665243Black");
+            // tableau.innerHTML -= recapTableau; 
+            // if (node.parentNode) {
+            //     node.parentNode.removeChild(node);
+            //   }
+        })
+
+        
+        //////////// Calcul du prix total par article //////////
+        totalPrice = document.getElementById("totalprice").innerHTML;
+        totalPrice = parseInt(produits.price) * parseInt(produits.quantite);
+        recapTableau=recapTableau.replace("[prixtotal]",parseInt(totalPrice));    
+        tableau.innerHTML += recapTableau;
+        
+       
+
+
+
+
+        //     let prixFinal = 0;
+        //     totalPrice = 0;
+        // for(let i = 0 ; i < localStorage.length ; i ++){      
+        //     prixFinal = document.getElementById("prixfinal").innerHTML;
+        //     console.log(typeof(totalPrice))
+        // }         
+        // prixFinal = ((parseInt(produits.price) * parseInt(produits.quantite)));     
+        // prixFinal = parseInt(prixFinal)
+        // console.log(prixFinal)
+        // console.log(typeof(prixFinal))
+        // document.getElementById("prixfinal").innerHTML = prixFinal + "€";  
+        // else if (produits = undefined) {
+        //     recapTableau = document.getElementById("lignes").innerHTML;
+        //     recapTableau=recapTableau.replace("img.jpg", "images/paniervide.jpg");       
+        //     tableau.innerHTML += recapTableau;
+        // }
+        /////////////////////POUR L'ENVOI DU FORMULAIRE ////////////////////////
+
+        // 01/11/2020
+        //Requête JSON contenant un objet de contact et un tableau de produits
+        // Réponse : retourne l'objet contact, le tableau produits et order_id ---> string
+
+        let supprimer= document.getElementById("supprimerarticle");
+            supprimer.addEventListener("click", function(){
+            removeItem("bearOurs_" + produits.id + produits.color)
+        })
+     
+     
+          // // //////////// calcul du prix total dans le panier //////////
+
+          prixFinal=document.getElementById("price").innerHTML;
+          console.log(prixFinal.innerHTML);
+  
+  
+        
+                
+
+        // submit.addEventListener('click', function() {
+        //     e.preventDefault();
+        //     let form = e.target;
+        //     fetch(form.action, { method: form.method, body: new FormData(form) })
+        //     .then(response => response.json())
+        //     .then(json => console.log(json))
+        //     return false;
+        //     })
+        //     .catch(erreur => console.log("Nous rencontrons une erreur : " + erreur));         
+        
+        // Empêcher le form d'être soumis - MDN - A garder
+        document.querySelector("form").addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log(products)
+                name = document.querySelector("#nom").value;
+                firstName = document.querySelector("#prenom").value;
+                email = document.querySelector("#email").value;
+                address = document.querySelector("#address").value;
+                country = document.querySelector("#country").value;
+    
+                contact = {prenom : firstName, nom : name, adresse : email, ville : address, adresseElectronique : country}
+                console.log(contact)
+            let informations = [products, contact];
+            console.log(informations)
+            // /* vérification données formulaires*/
+            let request = new XMLHttpRequest();
+            request.open("POST", url + "order");
+            request.setRequestHeader("Content-Type", "application/json");
+            request.send(JSON.stringify(informations));
+        
+            });
+
+   
     }
-    // }
-    //     
-    // }
 
 };
+// //////////// Calcul du prix total par article //////////
+// totalPrice = document.getElementById("totalprice").innerHTML;
+// totalPrice = parseInt(produits.price) * parseInt(produits.quantite);
+// recapTableau=recapTableau.replace("[prixtotal]",parseInt(totalPrice));    
+// tableau.innerHTML += recapTableau;
 
 
-////////// Bouton vider le panier //////////
-document.getElementById("vider").addEventListener("click", function() {
-    localStorage.clear();
-});
+//  // // //////////// calcul du prix total dans le panier //////////
+//  let prixFinal = 0;
+//  totalPrice = 0;
+// for(let i = 0 ; i < localStorage.length ; i ++){      
+//  prixFinal = document.getElementById("prixfinal").innerHTML;
+//  console.log(typeof(totalPrice))
+// }         
+// prixFinal = ((parseInt(produits.price) * parseInt(produits.quantite)));     
+// prixFinal = parseInt(prixFinal)
+// console.log(prixFinal)
+// console.log(typeof(prixFinal))
+// document.getElementById("prixfinal").innerHTML = prixFinal + "€";  
+// // else if (produits = undefined) {
+// //     recapTableau = document.getElementById("lignes").innerHTML;
+// //     recapTableau=recapTableau.replace("img.jpg", "images/paniervide.jpg");       
+// //     tableau.innerHTML += recapTableau;
+// // }
 
 
-/////////////////////POUR L'ENVOI DU FORMULAIRE ////////////////////////
 
-// Empêcher le form d'être soumis - MDN - A garder
-document.querySelector("form").addEventListener('submit', function(e) {
-    e.preventDefault();
-    let name = document.querySelector("#nom").value;
-    let firstName = document.querySelector("#prenom").value;
-    let email = document.querySelector("#email").value;
-    let address = document.querySelector("#address").value;
-    let country = document.querySelector("#country").value;
-        
-  });
-
-// /* vérification données formulaires*/
-// // let request = new XMLHttpRequest();
-// // request.open("POST", url + "/order");
-// // request.setRequestHeader("Content-Type", "application/json");
-// // request.send(JSON.parse(produit));
-
-// // submit.addEventListener('click', function() {
-// //     e.preventDefault();
-// //     let form = e.target;
-// //     fetch(form.action, { method: form.method, body: new FormData(form) })
-// //     .then(response => response.json())
-// //     .then(json => console.log(json))
-// //     return false;
-// //     })
-// //     .catch(erreur => console.log("Nous rencontrons une erreur : " + erreur));
-             
+   
