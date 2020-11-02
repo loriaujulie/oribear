@@ -73,7 +73,7 @@ fetch(url)
                 imageUrl: o.imageUrl, 
                 name: o.name, 
                 price : o.price/100,
-                color : colorSelect, 
+                // color : colorSelect, 
                 quantite : parseInt(quantite),
                 id : o._id
             }

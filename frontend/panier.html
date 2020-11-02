@@ -18,7 +18,9 @@
             <header class="row bg-info d-flex justify-content-around">        
                 <div class="title font-weight-bold">
                     <div class="text-left">
-                        <img src="images/orinoco.png" class="rounded img-fluid" alt="logo Orinoco">
+                        <a href="index.html">
+                            <img src="images/orinoco.png" class="rounded img-fluid" alt="logo Orinoco">
+                        </a>
                     </div>
                 </div>
                 <div class="panier row align-items-center justify-content-between">
@@ -60,27 +62,27 @@
                         <h2>Rappel de votre sélection</h2>
                     </div>
                     <table class="column col-12 mt-4">
-                        <thead class="ml-4" colspan="12">
-                            <tr class="col-12 bg-info text-light lead"> 
-                                <th colspan="3"><h4>Photo</h4></th>
-                                <th colspan="2"><h4>Nom de votre Ours</h4></th>
-                                <th colspan="2"><h4>Couleur</h4></th>
-                                <th colspan="1"><h4>Prix unitaire</h4></th>
-                                <th colspan="1"><h4>Quantité</h4></th>
-                                <th colspan="2"><h4>Prix total</h4></th>
-                                <th colspan="1"><h4>Supprimer l'article</h3></th>
+                        <thead class="ml-4" colspan="10">
+                            <tr class="col-10 bg-info text-light"> 
+                                <th colspan="2">Photo</th>
+                                <th colspan="2">Nom</th>
+                                <!-- <th colspan="2">Couleur</th> -->
+                                <th colspan="1">Prix/u</th>
+                                <th colspan="1">Quantité</th>
+                                <th colspan="2">Prix</th>
+                                <th colspan="1">Supprimer</th>
                             </tr>
                         </thead>
                         <tbody id="tableau" class="ml-4 col-12 bg-dark text-light">
                             <tr id="lignes" class="cache d-none " >
-                                <td  colspan="3">
+                                <td  colspan="2">
                                     <img src="img.jpg" class="img-thumbnail" width="400em" alt="ours choisi">   
                                 </td>
-                                <td id="name" colspan="2"><h5>[title]</h5></td>
-                                <td id="name" colspan="2"><h5>[couleur]</h5></td>
-                                <td id="price" colspan="1"><h5>[price]</h5></td>
-                                <td id="price" colspan="1"><h5>[quantite]</h5></td>
-                                <td id="totalprice" colspan="2"><h5>[prixtotal]</h4></td>
+                                <td id="name" colspan="2">[title]</td>
+                                <!-- <td id="name" colspan="2">[couleur]</td> -->
+                                <td id="price" colspan="1">[price]</td>
+                                <td id="price" colspan="1">[quantite]</td>
+                                <td id="totalprice" colspan="2">[prixtotal]</td>
                                 <td  colspan="1">
                                     <button type="button"  id="supprimerarticle" class="bg-info" onclick>
                                         <!-- <i class="far fa-trash-alt"></i> -->
@@ -111,34 +113,34 @@
                 <h3>
                     Veuillez remplir le formulaire ci-dessous pour recevoir votre(vos) ours :
                 </h3>
-                <p class="font-weight-bold">* Champs obligatoires</p>
+                <p>* Champs obligatoires</p>
                 <div class="form-group text-center">
                     <div class="form-group" id="coordonnees">
-                        <label for="nom" class="form-group col-2 mr-0 pr-0 mb-4 mt-4">
+                        <label for="nom" class="form-group pr-4 mb-4 mt-4">
                             Votre nom *
                         </label>
-                        <input type="text" name="nom" id="nom" placeholder="Nom" class="form-group col-3 ml-0 pl-0" autofocus required/>
+                        <input type="text" name="nom" id="nom" placeholder="Nom" class="form-group col-6 ml-0 pl-0" autofocus required/>
                     </div>
                     <div class="form-group">
-                        <label for="prenom" class="form-group col-2 mr-0 pr-0">
+                        <label for="prenom" class="form-group mr-0 pr-0">
                             Votre prénom *
                         </label>
-                        <input type="text" name="prenom" id="prenom" placeholder="Prénom" class="form-group col-3 ml-0 pl-0"  required/>
+                        <input type="text" name="prenom" id="prenom" placeholder="Prénom" class="form-group col-6 ml-0 pl-0"  required/>
                     </div>
                     <div class="form-group">
-                        <label for="email" class="form-group col-2 mr-0 pr-0"> 
+                        <label for="email" class="form-group pr-3"> 
                             Votre email *
                         </label>
-                        <input type="email" name="email" id="email" placeholder="Adresse email" class="form-group col-3 ml-0 pl-0" required/>
+                        <input type="email" name="email" id="email" placeholder="Adresse email" class="form-group col-6 ml-0 pl-0" required/>
                     </div>
                     <div class="form-group">
-                        <label for="adresse" class="form-group col-2 mr-0 pr-0">
+                        <label for="adresse" class="form-group mr-0 pr-0">
                             Votre adresse *
                         </label>
-                            <div class="form-group d-flex flex-column align-content-center justify-content-around flex-wrap">
-                            <input type="text" id="address" class="address form-group col-5" placeholder="Adresse" required/>
-                            <input type="number" min="0" max="99000" class="number form-group col-5" placeholder="Code postal" required/>
-                            <input type="text" id="country" class="address form-group col-5" placeholder="Ville" required/>
+                        <div class="form-group d-flex flex-column align-content-center justify-content-around flex-wrap">
+                            <input type="text" id="address" class="address form-group col-7" placeholder="Adresse" required/>
+                            <input type="number" min="0" max="99000" class="number form-group col-7" placeholder="Code postal" required/>
+                            <input type="text" id="country" class="address form-group col-7" placeholder="Ville" required/>
                         </div>
                     </div>
                     <div class="form-group col-lg-12 mt-4 text-center mb-4 pb-4">
