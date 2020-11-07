@@ -7,13 +7,11 @@ if(queryString == ""){
     window.location = "http://127.0.0.1:5500/frontend/index.html";
 }
 //////définition de la variable propre à chaque ours //////
-////A MODIFIER UNE FOIS VARIABLE IMPORTEE////
 url = url + queryString;
 
 //////Requête vers l'url - fetch = fonction asynchrone //////
-////A MODIFIER UNE FOIS VARIABLE IMPORTEE////
 fetch(url)
-//////Quand la requête aboutit//////
+    //////Quand la requête aboutit//////
     .then((response)=> response.json())
     //////Alors il exécutera la fonction suivante //////
     .then((o)=>{ 
@@ -26,18 +24,18 @@ fetch(url)
         bear=bear.replace("[price]",o.price /100 + " €");  
         //////à l'emplacement result, le bear ci-dessus sera intégré//////         
         document.getElementById('result').innerHTML = bear;
-        //////création de la variable relative à l'emplacement de colorselect//////
+        ////// création de la variable relative à l'emplacement de colorselect //////
         select = document.getElementById('colorselect');
 
         ////// BOUCLE CREANT LES OPTIONS DE PERSONNALISATION DES COULEURS //////
         for (let i = 0; i<=o.colors.length; i++){
             //////anticipation du problème selon lequel il pourrait ne pas y avoir de couleur définie//////
             if(o.colors[i] != undefined){
-                //////création des options selon le nombre de couleurs proposées par produit//////
+                ////// création des options selon le nombre de couleurs proposées par produit //////
                 options = document.createElement('option');
                 options.value = o.colors[i];
                 options.innerHTML = o.colors[i];
-                //////intégration des options//////
+                // intégration des options//////
                 select.appendChild(options);
                 colorSelect = select.options[select.selectedIndex].text;
             }               
@@ -79,7 +77,11 @@ fetch(url)
             }
             if (produits !=  null && colorSelect != "Choisir la couleur") {
             produitLigne = JSON.stringify(produits);
-            localStorage.setItem("bearOurs_"+ produits.id+produits.color, produitLigne);
+            localStorage.setItem(
+                // "bearOurs_"                + 
+                produits.id
+                // +produits.color
+                , produitLigne);
                 alert("Le produit a été ajouté au panier");         
             } else {
                 alert("Veuillez préalablement choisir une couleur");         

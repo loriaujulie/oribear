@@ -4,7 +4,7 @@
 
 /////Requête à l'url /////
 fetch(url)
-/////Promesse qui se resoud si accès aux données /////
+    /////Promesse qui se résoud si accès aux données /////
     .then((response) => response.json())
     ///// Autre promesse qui se resoud si accès aux données /////
     .then((o) => { 

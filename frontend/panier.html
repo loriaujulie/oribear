@@ -58,10 +58,10 @@
             </div>     
             <section class="selection text-center mt-4">               
                 <div class="container-fluid">
-                    <div colspan="3" class="bg-light text-info col-12"> 
-                        <h2>Rappel de votre sélection</h2>
-                    </div>
                     <table class="column col-12 mt-4">
+                        <div class="bg-light text-info col-12"> 
+                            <p id="alertpanier" class="text-info font-weight-bold">Rappel de votre sélection</p>
+                        </div>
                         <thead class="ml-4" colspan="10">
                             <tr class="col-10 bg-info text-light"> 
                                 <th colspan="2">Photo</th>
@@ -81,29 +81,27 @@
                                 <td id="name" colspan="2">[title]</td>
                                 <!-- <td id="name" colspan="2">[couleur]</td> -->
                                 <td id="price" colspan="1">[price]</td>
-                                <td id="price" colspan="1">[quantite]</td>
+                                <td id="quantite" colspan="1">[quantite]</td>
                                 <td id="totalprice" colspan="2">[prixtotal]</td>
                                 <td  colspan="1">
-                                    <button type="button"  id="supprimerarticle" class="bg-info" onclick>
-                                        <!-- <i class="far fa-trash-alt"></i> -->
+                                    <button type="button" id="supprimerarticle" class="bg-info" onclick>
+                                        <i class="far fa-trash-alt"></i>
                                     </button>
                                 </td>
                             </tr>
-                            <tr>
-                                <h2 id="prixfinal"><span></span></h2> 
-                            </tr>
                         </tbody>
+                        <tfoot>
+                            <tr> 
+                                <td id="prixfinal" colpsan=10 class="text-center text-light bg-info font-weight-bold">
+                                </td>
+                            </tr>
+                        </tfoot>
                     </table>            
                 </div>
                 <div class="bouton d-flex flex-row justify-content-around mt-4">
                     <button type="button" id="vider" class="btn btn-secondary btn btn-outline-info d-flex justify-content-center text-white" onclick style = "height : 2.5rem;">
                         Supprimer les produits
                     </button>
-                    <button type="button" id="valider" class="btn btn-secondary btn btn-outline-info d-flex justify-content-center text-white" style = "height : 2.5rem;">
-                        Valider panier
-                    </button> 
-                </div>
-                <div class="d-flex justify-content-center mt-4">
                     <button type="button" id="retouraccueil" class="btn btn-secondary btn btn-outline-info d-flex justify-content-center text-white" onclick="window.location.href = 'http://127.0.0.1:5500/frontend/index.html';" style = "height : 2.5rem;">
                         Retour à la sélection
                     </button>
@@ -144,7 +142,7 @@
                         </div>
                     </div>
                     <div class="form-group col-lg-12 mt-4 text-center mb-4 pb-4">
-                        <input class="btn btn-info submit" type="submit"> 
+                        <input class="btn btn-info submit" type="submit" id="submit"> 
                     </div>     
                 </div>                                  
             </form>

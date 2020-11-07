@@ -13,4 +13,4 @@ fetch(url + "order")
     // .then(response => response.json())
     // .then(json => console.log(json))
     // return false;
-    // .catch(erreur => console.log("Nous rencontrons une erreur : " + erreur)); 
+    // .catch(erreur => console.log("Nous rencontrons une erreur : " + erreur)); 2606
