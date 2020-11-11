@@ -1,6 +1,5 @@
 ///////////////////// PAGE PANIER.HTML /////////////////////
 
-tableau = document.getElementById('tableau'); 
 
 //////////// Calcul du prix total 1ère étape //////////  
 function addition(nombres) {
@@ -29,17 +28,8 @@ for (let key in localStorage){
         ////////// Bouton vider le panier //////////
         document.getElementById("vider").addEventListener("click", function() {
             localStorage.clear();
-            tableau.innerHTML -= recapTableau;             
-            affichage = document.getElementById("tableau").innerHTML;
-            affichage.innerHTML += "PANIER VIDE";
-            // if (produitLigne != id.includes(produits.id)){
-               
-            // // ( confirm("Le panier est vide, voulez-vous retourner à l'accueil ?" ) ) {
-            // //         open("http://127.0.0.1:5500/frontend/index.html")
-            // } 
-            // else {
-            //     window.location.href="panier.html"
-            // }
+            tableau.innerHTML -= recapTableau;      
+            document.getElementById('alertpanier').innerText = "VOTRE PANIER EST VIDE"       
         });    
         
         //////////// Calcul du prix total par article //////////

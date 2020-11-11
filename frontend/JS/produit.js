@@ -76,9 +76,15 @@ fetch(url)
                 id : o._id
             }
             if (produits !=  null && colorSelect != "Choisir la couleur") {
-            produitLigne = JSON.stringify(produits);
-            localStorage.setItem(produits.id+produits.color, produitLigne);
-                alert("Le produit a été ajouté au panier");         
+                if(produits.id+produits.color in localStorage){
+                    produitLigne = JSON.stringify(produits);
+                    localStorage.setItem(produits.id+produits.color, produitLigne);
+                    alert("Cet ours est déjà dans le panier, sa quantité est actualisée");
+                } else {
+                    alert("Cet ours vient d'être ajouté au panier");
+                    produitLigne = JSON.stringify(produits);
+                    localStorage.setItem(produits.id+produits.color, produitLigne);
+                }
             } else {
                 alert("Veuillez préalablement choisir une couleur");         
             }});

@@ -25,7 +25,7 @@ let colorSelect = null;
 ///// Initialisation de la variable produitLigne - ensemble des données prêtes à être envoyées au lcoalstorage - produit.js /////
 let produitLigne = null;
 ///// Initialisation de la variable - variable permettant d'envisager le remplacement des données dans la page - panier.js  /////
-let tableau = null;
+let tableau = document.getElementById('tableau'); ;
 ///// Initialisation de la variable tableau - variable permettant d'envisager le remplacement des données dans la page - panier.js /////
 let recapTableau = null;
 ///// Initialisation de la variable   /////
