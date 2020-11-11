@@ -58,58 +58,51 @@
             </div>     
             <section class="selection text-center mt-4">               
                 <div class="container-fluid">
-                    <table class="column col-12 mt-4">
-                        <div class="bg-light text-info col-12"> 
-                            <p id="alertpanier" class="text-info font-weight-bold">Rappel de votre sélection</p>
-                        </div>
-                        <thead class="ml-4" colspan="10">
-                            <tr class="col-10 bg-info text-light"> 
+                    <div class="bg-light text-info col-12"> 
+                        <h3 class="text-info font-weight-bold pb-3" id="alertpanier">Votre panier</h3>
+                    </div>
+                    
+                    <table class="column col-12 ">
+                        <thead colspan="12">
+                            <tr class="col-12 bg-info text-light"> 
                                 <th colspan="2">Photo</th>
                                 <th colspan="2">Nom</th>
-                                <!-- <th colspan="2">Couleur</th> -->
-                                <th colspan="1">Prix/u</th>
-                                <th colspan="1">Quantité</th>
-                                <th colspan="2">Prix</th>
-                                <th colspan="1">Supprimer</th>
+                                <th colspan="2">Couleur</th>
+                                <th colspan="3">Prix</th>
+                                <th colspan="3"></th>
                             </tr>
-                        </thead>
-                        <tbody id="tableau" class="ml-4 col-12 bg-dark text-light">
+                        </thead> 
+                        <tbody id="tableau" class="col-12 bg-dark text-light">
                             <tr id="lignes" class="cache d-none " >
                                 <td  colspan="2">
-                                    <img src="img.jpg" class="img-thumbnail" width="400em" alt="ours choisi">   
+                                    <img src="img.jpg" class="img-thumbnail" width="80em" alt="ours choisi">   
                                 </td>
                                 <td id="name" colspan="2">[title]</td>
-                                <!-- <td id="name" colspan="2">[couleur]</td> -->
-                                <td id="price" colspan="1">[price]</td>
-                                <td id="quantite" colspan="1">[quantite]</td>
-                                <td id="totalprice" colspan="2">[prixtotal]</td>
-                                <td  colspan="1">
+                                <td id="color" colspan="2">[couleur]</td>
+                                <td id="totalprice" colspan="3">[prixtotal]</td>
+                                <td  colspan="3">
                                     <button type="button" id="supprimerarticle" class="bg-info" onclick>
                                         <i class="far fa-trash-alt"></i>
                                     </button>
                                 </td>
                             </tr>
                         </tbody>
-                        <tfoot>
-                            <tr> 
-                                <td id="prixfinal" colpsan=10 class="text-center text-light bg-info font-weight-bold">
-                                </td>
-                            </tr>
-                        </tfoot>
                     </table>            
-                </div>
+                </div>                
+                <h5 id="prixfinal" class="text-center text-light bg-info font-weight-bold mt-4 ">
+                </h5>
                 <div class="bouton d-flex flex-row justify-content-around mt-4">
-                    <button type="button" id="vider" class="btn btn-secondary btn btn-outline-info d-flex justify-content-center text-white" onclick style = "height : 2.5rem;">
-                        Supprimer les produits
+                    <button type="button" id="vider" class="btn btn-info btn btn-outline-warning d-flex justify-content-center text-white" onclick style = "height : 2.5rem;">
+                        Vider panier
                     </button>
-                    <button type="button" id="retouraccueil" class="btn btn-secondary btn btn-outline-info d-flex justify-content-center text-white" onclick="window.location.href = 'http://127.0.0.1:5500/frontend/index.html';" style = "height : 2.5rem;">
-                        Retour à la sélection
+                    <button type="button" id="retouraccueil" class="btn btn-info btn btn-outline-success d-flex justify-content-center text-white" onclick="window.location.href = 'http://127.0.0.1:5500/frontend/index.html';" style = "height : 2.5rem;">
+                        Accueil
                     </button>
                 </div>
             </section>
-            <form class="px-4 py-3 col-12 text-center text-light" method="post" action="">                
+            <form class="px-4 py-3 col-12 text-center text-light" id="form" method="post" action="">                
                 <h3>
-                    Veuillez remplir le formulaire ci-dessous pour recevoir votre(vos) ours :
+                    Veuillez remplir le formulaire ci-dessous pour recevoir votre commande :
                 </h3>
                 <p>* Champs obligatoires</p>
                 <div class="form-group text-center">
@@ -117,13 +110,13 @@
                         <label for="nom" class="form-group pr-4 mb-4 mt-4">
                             Votre nom *
                         </label>
-                        <input type="text" name="nom" id="nom" placeholder="Nom" class="form-group col-6 ml-0 pl-0" autofocus required/>
+                        <input type="text" name="nom" id="nom" minlength="2" maxlength="20" placeholder="Nom" class="form-group col-6 ml-0 pl-0" autofocus required/>
                     </div>
                     <div class="form-group">
                         <label for="prenom" class="form-group mr-0 pr-0">
                             Votre prénom *
                         </label>
-                        <input type="text" name="prenom" id="prenom" placeholder="Prénom" class="form-group col-6 ml-0 pl-0"  required/>
+                        <input type="text" name="prenom" id="prenom" minlength="2" maxlength="20" placeholder="Prénom" class="form-group col-6 ml-0 pl-0"  required/>
                     </div>
                     <div class="form-group">
                         <label for="email" class="form-group pr-3"> 
@@ -136,10 +129,10 @@
                             Votre adresse *
                         </label>
                         <div class="form-group d-flex flex-column align-content-center justify-content-around flex-wrap">
-                            <input type="text" id="address" class="address form-group col-7" placeholder="Adresse" required/>
-                            <input type="number" min="0" max="99000" class="number form-group col-7" placeholder="Code postal" required/>
-                            <input type="text" id="country" class="address form-group col-7" placeholder="Ville" required/>
+                            <input type="text" id="address" class="address form-group col-7" minlength="2" maxlength="60" placeholder="Adresse" required/>
                         </div>
+                        <input type="number" min="0" max="99000" minlength="5" maxlength="5" class="number form-group col-7" placeholder="Code postal" required/>
+                        <input type="text" id="country" class="address form-group col-7" minlength="2" maxlength="20" placeholder="Ville" required/>
                     </div>
                     <div class="form-group col-lg-12 mt-4 text-center mb-4 pb-4">
                         <input class="btn btn-info submit" type="submit" id="submit"> 

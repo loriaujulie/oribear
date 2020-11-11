@@ -42,3 +42,11 @@ let email = null;
 let address = null;
 ///// Initialisation de la variable   /////
 let country = null;
+///// AFFICHAGE PANIER VIDE 1ère étape /////
+let videOuNon = [];
+///// Initialisation du tableau devant contenir le prix total des articles /////
+let tab = [];
+///// Initialisation du tableau devant contenir les clés des élements présents dans le localStorage /////
+let id = [];
+///// Initialisation du tableau devant contenir les produits à envoyer au localStorage /////
+let products = [];

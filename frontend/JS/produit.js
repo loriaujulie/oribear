@@ -71,17 +71,13 @@ fetch(url)
                 imageUrl: o.imageUrl, 
                 name: o.name, 
                 price : o.price/100,
-                // color : colorSelect, 
+                color : colorSelect, 
                 quantite : parseInt(quantite),
                 id : o._id
             }
             if (produits !=  null && colorSelect != "Choisir la couleur") {
             produitLigne = JSON.stringify(produits);
-            localStorage.setItem(
-                // "bearOurs_"                + 
-                produits.id
-                // +produits.color
-                , produitLigne);
+            localStorage.setItem(produits.id+produits.color, produitLigne);
                 alert("Le produit a été ajouté au panier");         
             } else {
                 alert("Veuillez préalablement choisir une couleur");         
