@@ -10,6 +10,10 @@ function addition(nombres) {
     return prixFinal;
 }
 
+function suppArticle() {
+    localStorage.removeItem();
+}
+
 ///////////////////////////RECUPERATION DES PRODUITS DANS LE LOCALSTORAGE //////////////////////////
 for (let key in localStorage){
     produitLigne = localStorage.getItem(key);
@@ -21,16 +25,27 @@ for (let key in localStorage){
         recapTableau=recapTableau.replace("[couleur]",produits.color); 
         recapTableau=recapTableau.replace("[price]",produits.price + " €"); 
         recapTableau=recapTableau.replace("[quantite]",produits.quantite);  
-        
+
         //////////// Ajoute tous les ID dans un tableau intitulé id - utile pour supprimer un article //////////     
-        id.push(produits.id+produits.color);         
-        
+        id.push(produits.id+produits.color);   
+
         ////////// Bouton vider le panier //////////
         document.getElementById("vider").addEventListener("click", function() {
             localStorage.clear();
             tableau.innerHTML -= recapTableau;      
             document.getElementById('alertpanier').innerText = "VOTRE PANIER EST VIDE"       
         });    
+
+        //////////// Suppression d'un article //////////
+        let suppButton = document.getElementById("supprimerarticle").key;
+        document.getElementById("supprimerarticle").addEventListener("click", function(suppArticle) {
+            suppArticle.splice(key)
+            tableau.innerHTML -= recapTableau;
+            //     id.splice(index,1);
+        // id.forEach(suppr)     
+        });
+
+
         
         //////////// Calcul du prix total par article //////////
         totalPrice = parseInt(produits.price) * parseInt(produits.quantite);
@@ -41,19 +56,14 @@ for (let key in localStorage){
         tab.push(totalPrice)
         
         //////////// définition des produits utilisables dans l'envoi au serveur //////////     
-        products.push(produits, delete produits.color)
-        // products.push(produits.id)
-
-        /////////////////////POUR L'ENVOI DU FORMULAIRE ////////////////////////
-        
+        // products.push(produits, delete produits.color)
+        products.push(produits.id)      
         
         //////// AFFICHAGE PANIER VIDE 2ème étape ///////
         videOuNon = localStorage.length;
     } 
 
 };
-if(id.includes("5be9c8541c9d440000665243Tan")){console.log("Je suis là")}
-if(id.includes()){console.log("Absent")}
 
 //////// AFFICHAGE PANIER VIDE 3ème étape ///////
 console.log(videOuNon);
@@ -64,15 +74,6 @@ if (videOuNon == 0){
 
 //////////// Calcul du prix total 3ème étape //////////
 document.getElementById("prixfinal").innerHTML = "Prix total de votre commande : " + addition(tab) + " €"; 
-
-
-//////////// Suppression d'un article //////////
-document.getElementById("supprimerarticle").addEventListener("click", function() {
-    // if(id.includes("5be9c8541c9d440000665243Tan")){console.log("Je suis là")}
-    Storage.removeItem("5be9c8541c9d440000665243Tan");
-       id.splice(index,1);
-   id.forEach(suppr)     
-});
 
 
  // 01/11/2020
@@ -90,29 +91,27 @@ document.getElementById("form").addEventListener('submit', function(e) {
     ville = document.getElementById("country").value;
 
     contact = {firstName : prenom, lastName : nom, address : addresse, city : ville, email : email};
+    
+    // informations = [contact, products];
+
+    console.log(contact, products)
+
     console.log(contact)
 
-
-//////////////// REGEX //////////////// 
-/// email ///    ^ [A-Za-z0-9] (([_ \. \ -]? [A-zA-Z0-9] +) *) @ ([A-Za-z0-9] +) (([\ . \ -]? [a-zA-Z0-9] +) *) \. ([A-Za-z] {2,}) $
-
-/// Nom prénom ville /// [A-Z][a-z]+[- ]
+    // localStorage.setItem("numeroDeCommande", order_id);
+    localStorage.setItem('prix', addition(tab));
+    window.location = 'commande.html';
 
 
-
-    informations = [contact, products];
-    console.log(informations)
-
-    //* Création de la requête *//
-    const options= {
+    /////////////////// REQUETE /////////////////// 
+    fetch(url + "order")
+    const options = {
         method : "POST",
-        body : JSON.stringify(informations),
+        body : JSON.stringify(contact, products),
         headers : {
             "Content-Type" : "application/json"
         }
     }
-
-    fetch(url + "order", options)
     .then(response=> response.json())
     .then(envoi=> console.log(envoi))
     .catch(erreur => alert("Nous rencontrons une erreur :" + erreur))

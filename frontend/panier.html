@@ -110,29 +110,29 @@
                         <label for="nom" class="form-group pr-4 mb-4 mt-4">
                             Votre nom *
                         </label>
-                        <input type="text" name="nom" id="nom" minlength="2" maxlength="20" placeholder="Nom" class="form-group col-6 ml-0 pl-0" autofocus required/>
+                        <input type="text" name="nom" id="nom" minlength="2" maxlength="20" placeholder="Nom (exemple : dupont)" class="form-group col-6 ml-0 pl-0" autofocus required/>
                     </div>
                     <div class="form-group">
                         <label for="prenom" class="form-group mr-0 pr-0">
                             Votre prénom *
                         </label>
-                        <input type="text" name="prenom" id="prenom" minlength="2" maxlength="20" placeholder="Prénom" class="form-group col-6 ml-0 pl-0"  required/>
+                        <input type="text" name="prenom" id="prenom" minlength="2" maxlength="20" placeholder="Prénom (exemple : jean)" class="form-group col-6 ml-0 pl-0"  required/>
                     </div>
                     <div class="form-group">
                         <label for="email" class="form-group pr-3"> 
                             Votre email *
                         </label>
-                        <input type="email" name="email" id="email" placeholder="Adresse email" class="form-group col-6 ml-0 pl-0" required/>
+                        <input type="email" name="email" id="email" pattern="^[a-zA-Z0-9\-_]+[a-zA-Z0-9\.\-_]*@[a-zA-Z0-9\-_]+\.[a-zA-Z\.\-_]{1,}[a-zA-Z\-_]+" placeholder="Adresse email (exemple : jeandupont@gmail.com)" class="form-group col-6 ml-0 pl-0" required/>
                     </div>
                     <div class="form-group">
                         <label for="adresse" class="form-group mr-0 pr-0">
                             Votre adresse *
                         </label>
                         <div class="form-group d-flex flex-column align-content-center justify-content-around flex-wrap">
-                            <input type="text" id="address" class="address form-group col-7" minlength="2" maxlength="60" placeholder="Adresse" required/>
+                            <input type="text" id="address" class="address form-group col-7" minlength="2" maxlength="60" placeholder="Adresse  (exemple : 1 rue de la mairie)" required/>
                         </div>
-                        <input type="number" min="0" max="99000" minlength="5" maxlength="5" class="number form-group col-7" placeholder="Code postal" required/>
-                        <input type="text" id="country" class="address form-group col-7" minlength="2" maxlength="20" placeholder="Ville" required/>
+                        <input type="number" min="0" max="99000" minlength="5" maxlength="5" class="number form-group col-7" placeholder="Code postal (exemple : 75000)" required/>
+                        <input type="text" id="country" class="address form-group col-7" minlength="2" maxlength="20" placeholder="Ville (exemple : paris)" required/>
                     </div>
                     <div class="form-group col-lg-12 mt-4 text-center mb-4 pb-4">
                         <input class="btn btn-info submit" type="submit" id="submit"> 
