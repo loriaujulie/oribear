@@ -27,9 +27,9 @@
                     <a href="panier.html" class="text-dark"> 
                         <svg width="1.5em" height="3em" viewBox="0 0 16 16" class="bi bi-basket" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/>
-                        </svg>
-                    </a>  
-                    <span class="text-center font-weight-bold ml-2">Panier</span>
+                        </svg> 
+                        <span class="text-center font-weight-bold ml-2">Panier</span>                
+                    </a> 
                 </div>
             </header>    
             <nav class="navbar navbar-dark bg-dark">
@@ -49,11 +49,6 @@
                             Panier
                         </a>
                     </h6>
-                    <h6 class="text-white">
-                        <a class="nav-link text-white" href="commande.html">
-                            J'arrive bientôt !
-                        </a>
-                    </h6>
                 </div>
             </div>     
             <section class="selection text-center mt-4">               
@@ -63,7 +58,7 @@
                     </div>
                     
                     <table class="column col-12 ">
-                        <thead colspan="12">
+                        <thead>
                             <tr class="col-12 bg-info text-light"> 
                                 <th colspan="2">Photo</th>
                                 <th colspan="2">Nom</th>
@@ -75,7 +70,7 @@
                         <tbody id="tableau" class="col-12 bg-dark text-light">
                             <tr id="lignes" class="cache d-none " >
                                 <td  colspan="2">
-                                    <img src="img.jpg" class="img-thumbnail" width="80em" alt="ours choisi">   
+                                    <img src="img.jpg" class="img-thumbnail" width="80rem" alt="ours choisi">   
                                 </td>
                                 <td id="name" colspan="2">[title]</td>
                                 <td id="color" colspan="2">[couleur]</td>
@@ -92,10 +87,10 @@
                 <h5 id="prixfinal" class="text-center text-light bg-info font-weight-bold mt-4 ">
                 </h5>
                 <div class="bouton d-flex flex-row justify-content-around mt-4">
-                    <button type="button" id="vider" class="btn btn-info btn btn-outline-warning d-flex justify-content-center text-white" onclick style = "height : 2.5rem;">
+                    <button type="button" id="vider" class="btn btn-info btn btn-outline-danger d-flex justify-content-center text-white" onclick style = "height : 2.5rem">
                         Vider panier
                     </button>
-                    <button type="button" id="retouraccueil" class="btn btn-info btn btn-outline-success d-flex justify-content-center text-white" onclick="window.location.href = 'http://127.0.0.1:5500/frontend/index.html';" style = "height : 2.5rem;">
+                    <button type="button" id="retouraccueil" class="btn btn-info btn btn-outline-success d-flex justify-content-center text-white" onclick="window.location.href = 'http://127.0.0.1:5500/frontend/index.html';" style = "height : 2.5rem">
                         Accueil
                     </button>
                 </div>
@@ -110,13 +105,13 @@
                         <label for="nom" class="form-group pr-4 mb-4 mt-4">
                             Votre nom *
                         </label>
-                        <input type="text" name="nom" id="nom" minlength="2" maxlength="20" placeholder="Nom (exemple : dupont)" class="form-group col-6 ml-0 pl-0" autofocus required/>
+                        <input type="text" name="nom" id="nom" minlength="2" maxlength="140" pattern="[A-Za-z\-]+?" placeholder="Nom (exemple : dupont)" class="form-group col-6 ml-0 pl-0" autofocus required/>
                     </div>
                     <div class="form-group">
-                        <label for="prenom" pattern="^[0-9]" class="form-group mr-0 pr-0">
+                        <label for="prenom" class="form-group mr-0 pr-0">
                             Votre prénom *
                         </label>
-                        <input type="text" name="prenom" id="prenom" minlength="2" maxlength="20" placeholder="Prénom (exemple : jean)" class="form-group col-6 ml-0 pl-0"  required/>
+                        <input type="text" name="prenom" id="prenom" minlength="2" maxlength="30" pattern="[A-Za-z]+[A-Za-z\-]*" placeholder="Prénom (exemple : jean)" class="form-group col-6 ml-0 pl-0"  required/>
                     </div>
                     <div class="form-group">
                         <label for="email" class="form-group pr-3"> 
@@ -125,14 +120,14 @@
                         <input type="email" name="email" id="email" pattern="^[a-zA-Z0-9\-_]+[a-zA-Z0-9\.\-_]*@[a-zA-Z0-9\-_]+\.[a-zA-Z\.\-_]{1,}[a-zA-Z\-_]+" placeholder="Adresse email (exemple : jeandupont@gmail.com)" class="form-group col-6 ml-0 pl-0" required/>
                     </div>
                     <div class="form-group">
-                        <label for="adresse" class="form-group mr-0 pr-0">
+                        <label for="adress" class="form-group mr-0 pr-0">
                             Votre adresse *
                         </label>
                         <div class="form-group d-flex flex-column align-content-center justify-content-around flex-wrap">
                             <input type="text" id="address" class="address form-group col-7" minlength="2" maxlength="60" placeholder="Adresse  (exemple : 1 rue de la mairie)" required/>
                         </div>
-                        <input type="number" min="0" max="99000" minlength="5" maxlength="5" class="number form-group col-7" placeholder="Code postal (exemple : 75000)" required/>
-                        <input type="text" id="country" class="address form-group col-7" minlength="2" maxlength="20" placeholder="Ville (exemple : paris)" required/>
+                        <input type="number" min="0" max="99000" class="number form-group col-7" placeholder="Code postal (exemple : 75000)" required/>
+                        <input type="text" id="country" class="address form-group col-7" minlength="2" maxlength="140" pattern="[A-Za-z\-]+?" placeholder="Ville (exemple : paris)" required/>
                     </div>
                     <div class="form-group col-lg-12 mt-4 text-center mb-4 pb-4">
                         <input class="btn btn-info submit" type="submit" id="submit"> 

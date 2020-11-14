@@ -10,15 +10,14 @@ function addition(nombres) {
     return prixFinal;
 }
 
-
 ///////////////////////////RECUPERATION DES PRODUITS DANS LE LOCALSTORAGE //////////////////////////
 try{
     for (let key in localStorage){
         produitLigne = localStorage.getItem(key);
         produits = JSON.parse(produitLigne);
         if(produitLigne != null && key != "prix"){
-            let idBear = produits.id;
-            let colorBear = produits.color;
+            idBear = produits.id;
+            colorBear = produits.color;
             recapTableau = document.getElementById("lignes").innerHTML;
             recapTableau=recapTableau.replace("img.jpg", produits.imageUrl);     
             recapTableau=recapTableau.replace("[title]",produits.name);               
@@ -101,7 +100,7 @@ document.getElementById("form").addEventListener('submit', function(e) {
     fetch(url + "order", options)
     .then(response=> response.json())
     .then(envoi=> {
-        let orderId = envoi.orderId;
+        orderId = envoi.orderId;
         localStorage.clear();
         localStorage.setItem('prix', addition(tab));
         localStorage.setItem("numeroDeCommande", orderId);

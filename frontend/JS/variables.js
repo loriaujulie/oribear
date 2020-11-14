@@ -1,12 +1,17 @@
 ///////////////////// PAGE LISTANT LES VARIABLES /////////////////////
 
+/////////////////////////////// PAGE ACCUEIL ///////////////////////////////
+
 ///// Initialisation de la variable url - variable visant à accéder à l'url - accueil.js et produit.js /////
 let url = "http://localhost:3000/api/teddies/";
-///// Initialisation de la variable result - variable concernant la div d'emplacement des données - accueil.js /////
+
+///// Initialisation de la variable result - variable concernant la div d'emplacement des données /////
 let result = null;
-///// Initialisation de la variable bear - variable permettant d'envisager le remplacement des données dans la page - accueil.js /////
+///// Initialisation de la variable bear - variable permettant d'envisager le remplacement des données dans la page /////
 let bear = null;
 ///// Initialisation de la variable listeProduit -  - produit.js /////
+
+/////////////////////////////// PAGE PRODUITS ///////////////////////////////
 let listeProduit = null;
 ///// Initialisation de la variable listeProduit -  - produit.js /////
 let produit = null;
@@ -22,12 +27,18 @@ let plusOurs = null;
 let quantite = null;
 ///// Initialisation de la variable colorSelect - couleur choisie par l'utilisateur - produit.js  /////
 let colorSelect = null;
-///// Initialisation de la variable produitLigne - ensemble des données prêtes à être envoyées au lcoalstorage - produit.js /////
+///// Initialisation de la variable produitLigne - ensemble des données prêtes à être envoyées au localstorage - produit.js et panier.js /////
 let produitLigne = null;
+
+/////////////////////////////// PAGE PANIER ///////////////////////////////
 ///// Initialisation de la variable - variable permettant d'envisager le remplacement des données dans la page - panier.js  /////
 let tableau = document.getElementById('tableau'); ;
 ///// Initialisation de la variable tableau - variable permettant d'envisager le remplacement des données dans la page - panier.js /////
 let recapTableau = null;
+///// Initialisation de la variable contenant les id des produits /////
+let idBear = null;
+///// Initialisation de la variable contenant les couleurs des produits /////
+let colorBear = null;
 ///// Initialisation de la variable   /////
 let totalPrice = null;
 ///// Initialisation de la variable   /////
@@ -50,3 +61,5 @@ let tab = [];
 let id = [];
 ///// Initialisation du tableau devant contenir les produits à envoyer au localStorage /////
 let products = [];
+///// Initialisation du numéro de commande en vue de son stockage /////
+let orderId = null;
