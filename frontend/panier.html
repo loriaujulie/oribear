@@ -81,7 +81,7 @@
                                 <td id="color" colspan="2">[couleur]</td>
                                 <td id="totalprice" colspan="3">[prixtotal]</td>
                                 <td  colspan="3">
-                                    <button type="button" id="supprimerarticle" class="bg-info" onclick>
+                                    <button type="button" id="supprimerarticle_[idsuppr]" class="bg-info" onclick>
                                         <i class="far fa-trash-alt"></i>
                                     </button>
                                 </td>
@@ -113,7 +113,7 @@
                         <input type="text" name="nom" id="nom" minlength="2" maxlength="20" placeholder="Nom (exemple : dupont)" class="form-group col-6 ml-0 pl-0" autofocus required/>
                     </div>
                     <div class="form-group">
-                        <label for="prenom" class="form-group mr-0 pr-0">
+                        <label for="prenom" pattern="^[0-9]" class="form-group mr-0 pr-0">
                             Votre prénom *
                         </label>
                         <input type="text" name="prenom" id="prenom" minlength="2" maxlength="20" placeholder="Prénom (exemple : jean)" class="form-group col-6 ml-0 pl-0"  required/>

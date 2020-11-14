@@ -10,77 +10,67 @@ function addition(nombres) {
     return prixFinal;
 }
 
-//////////// Suppression d'un article 1ère étape //////////  
-function suppArticle() {
-    localStorage.removeItem();
-}
 
 ///////////////////////////RECUPERATION DES PRODUITS DANS LE LOCALSTORAGE //////////////////////////
 try{
     for (let key in localStorage){
         produitLigne = localStorage.getItem(key);
         produits = JSON.parse(produitLigne);
-        if(produitLigne != null){
+        if(produitLigne != null && key != "prix"){
+            let idBear = produits.id;
+            let colorBear = produits.color;
             recapTableau = document.getElementById("lignes").innerHTML;
             recapTableau=recapTableau.replace("img.jpg", produits.imageUrl);     
             recapTableau=recapTableau.replace("[title]",produits.name);               
             recapTableau=recapTableau.replace("[couleur]",produits.color); 
             recapTableau=recapTableau.replace("[price]",produits.price + " €"); 
             recapTableau=recapTableau.replace("[quantite]",produits.quantite);  
-
-            //////////// Ajoute tous les ID dans un tableau intitulé id - utile pour supprimer un article //////////     
-            id.push(produits.id+produits.color);   
+            recapTableau=recapTableau.replace("[idsuppr]", produits.id);  
 
             ////////// Bouton vider le panier //////////
             document.getElementById("vider").addEventListener("click", function() {
-                localStorage.clear();
-                tableau.innerHTML -= recapTableau;      
-                document.getElementById('alertpanier').innerText = "VOTRE PANIER EST VIDE"       
+                localStorage.clear();     
+                window.location=window.location;
+                tableau.innerHTML -= recapTableau; 
+                document.getElementById('alertpanier').innerText = "VOTRE PANIER EST VIDE";
             });    
 
-            //////////// Suppression d'un article 2ème étape //////////
-            let suppButton = document.getElementById("supprimerarticle").key;
-            document.getElementById("supprimerarticle").addEventListener("click", function(suppArticle) {
-                suppArticle.splice(key)
-                tableau.innerHTML -= recapTableau;
-                //     id.splice(index,1);
-            // id.forEach(suppr)     
-            });
-            
             //////////// Calcul du prix total par article //////////
             totalPrice = parseInt(produits.price) * parseInt(produits.quantite);
             recapTableau=recapTableau.replace("[prixtotal]",parseFloat(totalPrice) + " €");    
             tableau.innerHTML += recapTableau; 
-            
+                       
+            //////////// Suppression d'un article 2ème étape //////////
+            document.getElementById("supprimerarticle_"+idBear).addEventListener("click", function() {
+                localStorage.removeItem(idBear+colorBear);
+                window.location=window.location;
+                
+            });
+
             //////////// Calcul du prix total 2ème étape //////////     
             tab.push(totalPrice)
             
             //////////// définition des produits utilisables dans l'envoi au serveur //////////     
-            // products.push(produits, delete produits.color)
             products.push(produits.id)      
             
             //////// AFFICHAGE PANIER VIDE 2ème étape ///////
             videOuNon = localStorage.length;
         } 
-
-    };
+    } 
 } catch (error) {
-    console.log.error("une erreur s'est produite");
+    console.log("une erreur s'est produite" + error);
     window.location.href = "index.html";
 }
 //////// AFFICHAGE PANIER VIDE 3ème étape ///////
 if (videOuNon == 0){
-    console.log("mon panier est vide")
-    document.getElementById('alertpanier').innerText = "VOTRE PANIER EST VIDE"
+    console.log("mon panier est vide");
+    document.getElementById('alertpanier').innerText = "VOTRE PANIER EST VIDE";    
+    localStorage.clear();
 }
 
 //////////// Calcul du prix total 3ème étape //////////
 document.getElementById("prixfinal").innerHTML = "Prix total de votre commande : " + addition(tab) + " €"; 
 
-
- // 01/11/2020
-        //Requête JSON contenant un objet de contact et un tableau de produits
-        // Réponse : retourne l'objet contact, le tableau produits et order_id ---> string
 
 document.getElementById("form").addEventListener('submit', function(e) {
     e.preventDefault();
@@ -94,27 +84,28 @@ document.getElementById("form").addEventListener('submit', function(e) {
 
     contact = {firstName : prenom, lastName : nom, address : addresse, city : ville, email : email};
     
-    informations = [contact, products];
+    informations = {
+        contact:contact, 
+        products:products};
 
-    console.log(contact, products)
+    console.log(informations);
 
-    console.log(contact)
-
-    // localStorage.setItem("numeroDeCommande", order_id);
-    localStorage.setItem('prix', addition(tab));
-    window.location = 'commande.html';
-
-
-    /////////////////// REQUETE /////////////////// 
-    fetch(url + "order")
-    const options = {
+   const options = {
         method : "POST",
-        body : JSON.stringify(contact, products),
+        body : JSON.stringify(informations),
         headers : {
             "Content-Type" : "application/json"
         }
     }
+    /////////////////// REQUETE /////////////////// 
+    fetch(url + "order", options)
     .then(response=> response.json())
-    .then(envoi=> console.log(envoi))
+    .then(envoi=> {
+        let orderId = envoi.orderId;
+        localStorage.clear();
+        localStorage.setItem('prix', addition(tab));
+        localStorage.setItem("numeroDeCommande", orderId);
+        window.location = 'commande.html';
+    })
     .catch(erreur => alert("Nous rencontrons une erreur :" + erreur))
 });
