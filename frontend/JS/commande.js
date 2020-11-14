@@ -1,11 +1,15 @@
+
+
 fetch(url + "order")
     .then((response) => response.json())
-    .then((order) => {
-        // result = document.getElementsById("numerocommande");
-        localStorage.getItem("prix");
-        prix = document.getElementsById("prixtotal").innerHTML;
-        prix.innerHTML=order.prix;
-        result.innerHTML = JSON.parse(order)
+    .then(() => {      
+        prixCommande = localStorage.getItem("prix");
+        prixCommandeTotal = (JSON.parse(prixCommande) + " €")
+        console.log(prixCommandeTotal)    
+        document.getElementById("prixtotal").innerHTML += prixCommandeTotal;      
+        numeroCommande = (JSON.parse(order_id))
+        console.log(numeroCommande);    
+        document.getElementById("numerocommande").innerHTML += numeroCommande;
     })
     .catch(erreur => console.log("Nous rencontrons une erreur : " + erreur)); 
 

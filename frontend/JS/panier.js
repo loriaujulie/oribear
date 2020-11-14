@@ -10,63 +10,65 @@ function addition(nombres) {
     return prixFinal;
 }
 
+//////////// Suppression d'un article 1ère étape //////////  
 function suppArticle() {
     localStorage.removeItem();
 }
 
 ///////////////////////////RECUPERATION DES PRODUITS DANS LE LOCALSTORAGE //////////////////////////
-for (let key in localStorage){
-    produitLigne = localStorage.getItem(key);
-    produits = JSON.parse(produitLigne);
-    if(produitLigne != null){
-        recapTableau = document.getElementById("lignes").innerHTML;
-        recapTableau=recapTableau.replace("img.jpg", produits.imageUrl);     
-        recapTableau=recapTableau.replace("[title]",produits.name);               
-        recapTableau=recapTableau.replace("[couleur]",produits.color); 
-        recapTableau=recapTableau.replace("[price]",produits.price + " €"); 
-        recapTableau=recapTableau.replace("[quantite]",produits.quantite);  
+try{
+    for (let key in localStorage){
+        produitLigne = localStorage.getItem(key);
+        produits = JSON.parse(produitLigne);
+        if(produitLigne != null){
+            recapTableau = document.getElementById("lignes").innerHTML;
+            recapTableau=recapTableau.replace("img.jpg", produits.imageUrl);     
+            recapTableau=recapTableau.replace("[title]",produits.name);               
+            recapTableau=recapTableau.replace("[couleur]",produits.color); 
+            recapTableau=recapTableau.replace("[price]",produits.price + " €"); 
+            recapTableau=recapTableau.replace("[quantite]",produits.quantite);  
 
-        //////////// Ajoute tous les ID dans un tableau intitulé id - utile pour supprimer un article //////////     
-        id.push(produits.id+produits.color);   
+            //////////// Ajoute tous les ID dans un tableau intitulé id - utile pour supprimer un article //////////     
+            id.push(produits.id+produits.color);   
 
-        ////////// Bouton vider le panier //////////
-        document.getElementById("vider").addEventListener("click", function() {
-            localStorage.clear();
-            tableau.innerHTML -= recapTableau;      
-            document.getElementById('alertpanier').innerText = "VOTRE PANIER EST VIDE"       
-        });    
+            ////////// Bouton vider le panier //////////
+            document.getElementById("vider").addEventListener("click", function() {
+                localStorage.clear();
+                tableau.innerHTML -= recapTableau;      
+                document.getElementById('alertpanier').innerText = "VOTRE PANIER EST VIDE"       
+            });    
 
-        //////////// Suppression d'un article //////////
-        let suppButton = document.getElementById("supprimerarticle").key;
-        document.getElementById("supprimerarticle").addEventListener("click", function(suppArticle) {
-            suppArticle.splice(key)
-            tableau.innerHTML -= recapTableau;
-            //     id.splice(index,1);
-        // id.forEach(suppr)     
-        });
+            //////////// Suppression d'un article 2ème étape //////////
+            let suppButton = document.getElementById("supprimerarticle").key;
+            document.getElementById("supprimerarticle").addEventListener("click", function(suppArticle) {
+                suppArticle.splice(key)
+                tableau.innerHTML -= recapTableau;
+                //     id.splice(index,1);
+            // id.forEach(suppr)     
+            });
+            
+            //////////// Calcul du prix total par article //////////
+            totalPrice = parseInt(produits.price) * parseInt(produits.quantite);
+            recapTableau=recapTableau.replace("[prixtotal]",parseFloat(totalPrice) + " €");    
+            tableau.innerHTML += recapTableau; 
+            
+            //////////// Calcul du prix total 2ème étape //////////     
+            tab.push(totalPrice)
+            
+            //////////// définition des produits utilisables dans l'envoi au serveur //////////     
+            // products.push(produits, delete produits.color)
+            products.push(produits.id)      
+            
+            //////// AFFICHAGE PANIER VIDE 2ème étape ///////
+            videOuNon = localStorage.length;
+        } 
 
-
-        
-        //////////// Calcul du prix total par article //////////
-        totalPrice = parseInt(produits.price) * parseInt(produits.quantite);
-        recapTableau=recapTableau.replace("[prixtotal]",parseFloat(totalPrice) + " €");    
-        tableau.innerHTML += recapTableau; 
-        
-        //////////// Calcul du prix total 2ème étape //////////     
-        tab.push(totalPrice)
-        
-        //////////// définition des produits utilisables dans l'envoi au serveur //////////     
-        // products.push(produits, delete produits.color)
-        products.push(produits.id)      
-        
-        //////// AFFICHAGE PANIER VIDE 2ème étape ///////
-        videOuNon = localStorage.length;
-    } 
-
-};
-
+    };
+} catch (error) {
+    console.log.error("une erreur s'est produite");
+    window.location.href = "index.html";
+}
 //////// AFFICHAGE PANIER VIDE 3ème étape ///////
-console.log(videOuNon);
 if (videOuNon == 0){
     console.log("mon panier est vide")
     document.getElementById('alertpanier').innerText = "VOTRE PANIER EST VIDE"
@@ -92,7 +94,7 @@ document.getElementById("form").addEventListener('submit', function(e) {
 
     contact = {firstName : prenom, lastName : nom, address : addresse, city : ville, email : email};
     
-    // informations = [contact, products];
+    informations = [contact, products];
 
     console.log(contact, products)
 
