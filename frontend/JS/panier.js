@@ -11,42 +11,41 @@ function addition(nombres) {
 }
 
 ///////////////////////////RECUPERATION DES PRODUITS DANS LE LOCALSTORAGE //////////////////////////
-try{
-    for (let key in localStorage){
+try {
+    for (let key in localStorage) {
         produitLigne = localStorage.getItem(key);
         produits = JSON.parse(produitLigne);
-        if(produitLigne != null && key != "prix"){
-            idBear = produits.id;
-            colorBear = produits.color;
+        if(produitLigne != null && key != "prix") {
+            let idBear = produits.id;
+            let colorBear = produits.color;
             recapTableau = document.getElementById("lignes").innerHTML;
-            recapTableau=recapTableau.replace("img.jpg", produits.imageUrl);     
-            recapTableau=recapTableau.replace("[title]",produits.name);               
-            recapTableau=recapTableau.replace("[couleur]",produits.color); 
-            recapTableau=recapTableau.replace("[price]",produits.price + " €"); 
-            recapTableau=recapTableau.replace("[quantite]",produits.quantite);  
-            recapTableau=recapTableau.replace("[idsuppr]", produits.id);  
+            recapTableau = recapTableau.replace("img.jpg", produits.imageUrl);     
+            recapTableau = recapTableau.replace("[title]",produits.name);               
+            recapTableau = recapTableau.replace("[couleur]",produits.color); 
+            recapTableau = recapTableau.replace("[price]",produits.price + " €"); 
+            recapTableau = recapTableau.replace("[quantite]",produits.quantite);  
+            recapTableau = recapTableau.replace("[idsuppr]", produits.id + produits.color);  
 
             ////////// Bouton vider le panier //////////
             document.getElementById("vider").addEventListener("click", function() {
                 localStorage.clear();     
-                window.location=window.location;
+                window.location = window.location;
                 tableau.innerHTML -= recapTableau; 
-                document.getElementById('alertpanier').innerText = "VOTRE PANIER EST VIDE";
+                document.getElementById("alertpanier").innerText = "VOTRE PANIER EST VIDE";
             });    
 
             //////////// Calcul du prix total par article //////////
             totalPrice = parseInt(produits.price) * parseInt(produits.quantite);
-            recapTableau=recapTableau.replace("[prixtotal]",parseFloat(totalPrice) + " €");    
-            tableau.innerHTML += recapTableau; 
+            recapTableau = recapTableau.replace("[prixtotal]",parseFloat(totalPrice) + " €");    
+            tableau.insertAdjacentHTML("beforeend", recapTableau);
                        
             //////////// Suppression d'un article 2ème étape //////////
-            document.getElementById("supprimerarticle_"+idBear).addEventListener("click", function() {
-                localStorage.removeItem(idBear+colorBear);
-                window.location=window.location;
-                
+            document.getElementById("supprimerarticle_" + idBear + colorBear).addEventListener("click", function() {
+                localStorage.removeItem(idBear + colorBear);
+                window.location = window.location;                
             });
 
-            //////////// Calcul du prix total 2ème étape //////////     
+            //////////// Calcul du prix total de la commande 2ème étape //////////     
             tab.push(totalPrice)
             
             //////////// définition des produits utilisables dans l'envoi au serveur //////////     
@@ -57,13 +56,13 @@ try{
         } 
     } 
 } catch (error) {
-    console.log("une erreur s'est produite" + error);
+    console.log("Une erreur s'est produite" + error);
     window.location.href = "index.html";
 }
 //////// AFFICHAGE PANIER VIDE 3ème étape ///////
-if (videOuNon == 0){
+if (videOuNon == 0) {
     console.log("mon panier est vide");
-    document.getElementById('alertpanier').innerText = "VOTRE PANIER EST VIDE";    
+    document.getElementById("alertpanier").innerText = "VOTRE PANIER EST VIDE";    
     localStorage.clear();
 }
 
@@ -71,7 +70,8 @@ if (videOuNon == 0){
 document.getElementById("prixfinal").innerHTML = "Prix total de votre commande : " + addition(tab) + " €"; 
 
 
-document.getElementById("form").addEventListener('submit', function(e) {
+if (videOuNon != 0) {
+    document.getElementById("form").addEventListener("submit", function(e) {
     e.preventDefault();
 
     ///// Définition de l'objet contact /////
@@ -81,11 +81,18 @@ document.getElementById("form").addEventListener('submit', function(e) {
     addresse = document.getElementById("address").value;
     ville = document.getElementById("country").value;
 
-    contact = {firstName : prenom, lastName : nom, address : addresse, city : ville, email : email};
+    contact = {
+        firstName : prenom,
+        lastName : nom,
+        address : addresse,
+        city : ville,
+        email : email
+    };
     
     informations = {
-        contact:contact, 
-        products:products};
+        contact : contact, 
+        products : products
+    };
 
     console.log(informations);
 
@@ -98,13 +105,15 @@ document.getElementById("form").addEventListener('submit', function(e) {
     }
     /////////////////// REQUETE /////////////////// 
     fetch(url + "order", options)
-    .then(response=> response.json())
-    .then(envoi=> {
+    .then(response => response.json())
+    .then(envoi => {
         orderId = envoi.orderId;
         localStorage.clear();
-        localStorage.setItem('prix', addition(tab));
+        localStorage.setItem("prix", addition(tab));
         localStorage.setItem("numeroDeCommande", orderId);
-        window.location = 'commande.html';
+        window.location = "commande.html";
     })
     .catch(erreur => alert("Nous rencontrons une erreur :" + erreur))
-});
+})}
+else (document.getElementById("form").addEventListener("submit", function(e) {
+    open("index.html")}));

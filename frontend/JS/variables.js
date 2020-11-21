@@ -35,10 +35,6 @@ let produitLigne = null;
 let tableau = document.getElementById('tableau'); ;
 ///// Initialisation de la variable tableau - variable permettant d'envisager le remplacement des données dans la page - panier.js /////
 let recapTableau = null;
-///// Initialisation de la variable contenant les id des produits /////
-let idBear = null;
-///// Initialisation de la variable contenant les couleurs des produits /////
-let colorBear = null;
 ///// Initialisation de la variable   /////
 let totalPrice = null;
 ///// Initialisation de la variable   /////

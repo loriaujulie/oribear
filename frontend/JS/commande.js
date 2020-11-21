@@ -1,3 +1,5 @@
+///////////////////// PAGE COMMANDE.HTML /////////////////////
+
 fetch(url + "order")
     .then((response) => response.json())
     .then(() => {      
@@ -13,16 +15,16 @@ fetch(url + "order")
             document.getElementById("numerocommande").innerHTML += numeroDeLaCommande;
 
             /////// RETOUR A LA SELECTION APRES AVOIR PASSE LA COMMANDE ///////
-            document.querySelector("a").addEventListener("click", function(){
+            document.querySelector("a").addEventListener("click", function() {
                 localStorage.clear();
                 window.location.href = "index.html";
             })
-            /////// LOCALSTORAGE VIDE A LA FERMETURE DE LA PAGE ///////
+            /////// LOCALSTORAGE EST VIDE A LA FERMETURE DE LA PAGE ///////
             window.onbeforeunload = function() { 
                 localStorage.clear(); 
             } 
-        //////// AFFICHAGE SI LE PANIER EST VIDE ///////
-        } else if (localStorage.length == 0){
+        //////// AFFICHAGE DE LA PAGE SI LE PANIER EST VIDE ///////
+        } else if (localStorage.length == 0) {
             console.log("mon panier est vide");
             document.getElementById("prixtotal").innerHTML += "0 €";  
             document.getElementById("numerocommande").innerHTML += "Aucun article dans le panier";           
